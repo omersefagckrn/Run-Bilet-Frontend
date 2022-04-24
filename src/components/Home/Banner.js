@@ -26,7 +26,7 @@ const Banner = () => {
 					<SwiperSlide key={i}>
 						{({ isActive }) => (
 							<div className='relative'>
-								<img className={`${isActive && 'mt-5'}`} src={Swipers} alt='' />
+								<img className={`${isActive && 'mt-5'} w-full`} src={Swipers} alt='' />
 								<img className='absolute bottom-0 w-9 h-9 object-scale-down' src={Logo} alt='' />
 							</div>
 						)}

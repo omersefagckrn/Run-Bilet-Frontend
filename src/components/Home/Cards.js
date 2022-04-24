@@ -6,7 +6,7 @@ import Logo from '../../assets/logo.svg';
 const Cards = () => {
 	return (
 		<>
-			<div className='ml-4 mt-4'>
+			<div className='ml-4 mt-4 mr-4'>
 				<div className='font-[500] text-main text-3xl select-none'>Elektronik Müzik Partileri</div>
 				<Swiper
 					breakpoints={{
@@ -24,19 +24,20 @@ const Cards = () => {
 						},
 						1024: {
 							slidesPerView: 6,
-							spaceBetween: 10
+							spaceBetween: 30
 						},
 						1500: {
-							slidesPerView: 9.5
+							slidesPerView: 9.5,
+							spaceBetween: 10
 						}
 					}}
 					grabCursor={true}>
 					{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((_item, i) => (
 						<SwiperSlide key={i}>
-							<div className='bg-[#fafafa] mt-4 mb-4 w-44'>
+							<div className='bg-[#fafafa] mt-4 mb-4'>
 								<div className='flex flex-col'>
 									<div className='flex relative flex-col'>
-										<img className='h-24' src='https://picsum.photos/400/100' alt='' />
+										<img className='h-24' src='https://picsum.photos/800/100' alt='' />
 										<img className='absolute bottom-0 w-9 h-9 object-scale-down' src={Logo} alt='' />
 									</div>
 									<div className='select-none'>
