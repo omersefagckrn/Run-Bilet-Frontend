@@ -1,7 +1,5 @@
-import Navbar from './Navbar';
-import Banner from './Home/Banner';
-import MainFilter from './Home/MainFilter';
-import Cards from './Home/Cards';
-import CreateActivity from './Home/CreateActivity';
+import { Panel } from './Organizer';
+import { Navbar } from './Navbar';
+import { Banner, MainFilter, Cards, CreateActivity } from './Home';
 
-export { Navbar, Banner, MainFilter, Cards, CreateActivity };
+export { Panel, Navbar, Banner, MainFilter, Cards, CreateActivity };

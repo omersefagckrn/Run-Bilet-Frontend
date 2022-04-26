@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#lmev1izeua)">
+        <path d="M0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12z" fill="#00BCE6" fill-opacity=".1"/>
+        <path d="M9.939 1 9 5.971v1.098C9 8.135 8.066 9 7 9c-1.066 0-2-.865-2-1.932V5.971L7.996 1h1.943zM6.887 1 4 5.971v1.098C4 8.135 3.066 9 2 9 .934 9 0 8.135 0 7.068V5.971L4.873 1h2.014zM24 7.068C24 8.135 23.066 9 22 9c-1.066 0-2-.933-2-2V5.902L17.113 1h2.014L24 5.971v1.097zM14 5.9v1.098C14 8.064 13.066 9 12 9c-1.066 0-2-.933-2-2V5.902L11.047 1h1.906L14 5.9zM16.004 1l2.994 5.002V7.1c0 1.067-.932 1.9-1.998 1.9-1.066 0-2-.933-2-2V5.902L14.061 1h1.943zM20 12a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1h16zm3 1a3 3 0 0 0-3-3H4a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3v-7zM4.5 15.836a.5.5 0 0 1-.354-.853l1.836-1.836a.5.5 0 0 1 .707.707L4.853 15.69a.498.498 0 0 1-.353.146zm.518 2.018 4.01-4.01a.5.5 0 0 0-.707-.707l-4.01 4.01a.5.5 0 0 0 .707.707z" fill="#53525E"/>
+    </g>
+    <defs>
+        <filter id="lmev1izeua" x="-4" y="-4" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feGaussianBlur in="BackgroundImage" stdDeviation="2"/>
+            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_7_3722"/>
+            <feBlend in="SourceGraphic" in2="effect1_backgroundBlur_7_3722" result="shape"/>
+        </filter>
+    </defs>
+</svg>

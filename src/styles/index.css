@@ -1,0 +1,58 @@
+* {
+	font-family: 'Catamaran', sans-serif;
+}
+
+.pro-inner-list-item {
+	background-color: #fafafa !important;
+}
+
+.pro-item-content {
+	background-color: #fafafa !important;
+	color: #53525e !important;
+}
+
+.pro-inner-item {
+	background-color: #fafafa !important; /* item isActive bg-primary */
+}
+
+.pro-sidebar-layout {
+	background-color: white !important;
+}
+
+.pro-icon {
+	width: 1.5rem !important;
+}
+
+.pro-sidebar .pro-sidebar-header {
+	border: none !important;
+}
+
+.pro-sidebar {
+	border: none !important;
+}
+
+/* pro_sidebar */
+
+.bg-tickets {
+	background-image: linear-gradient(to bottom, #f4fdff 0%, #fff 100%);
+}
+
+.bg-navbar {
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+	background-image: linear-gradient(to bottom, #f4fdff 0%, #fff 100%);
+}
+
+.bg-filter {
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+	background-image: linear-gradient(to bottom, #f4fdff, #fff);
+}
+
+.bg-create_activity {
+	background-image: linear-gradient(to bottom, #f4fdff 0%, #fff 100%);
+}
+
+.bg-banner {
+	background-image: linear-gradient(to bottom, #f4fdff 0%, #fff 100%);
+}

@@ -1,26 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import RunTicket from '../assets/runTicket.svg';
-import Avatar from '../assets/avatar.svg';
-
-import { ReactComponent as ActiveActivity } from '../assets/activeActivity.svg';
-import { ReactComponent as Activity } from '../assets/activity.svg';
-
-import { ReactComponent as ActiveHome } from '../assets/activeHome.svg';
-import { ReactComponent as Home } from '../assets/home.svg';
-
-import { ReactComponent as ActiveTicket } from '../assets/activeTicket.svg';
-import { ReactComponent as Ticket } from '../assets/ticket.svg';
-
-import { ReactComponent as Search } from '../assets/search.svg';
+import { Home, RunTicket, Profile, Ticket, Activity, ActiveActivity, ActiveHome, ActiveTicket, Search } from '../../assets';
 
 const Navbar = ({ Tab }) => {
 	return (
 		<>
-			<div className='flex items-center justify-between mx-4 select-none'>
+			<div className='flex items-center justify-between mx-4 select-none bg-navbar'>
 				<div className='flex items-center justify-center'>
-					<img src={RunTicket} alt='' className='w-32' />
+					<Link to='/'>
+						<RunTicket className='w-32' />
+					</Link>
 				</div>
 				<div className='md:flex items-center justify-center hidden'>
 					<Search />
@@ -47,7 +37,7 @@ const Navbar = ({ Tab }) => {
 					</Link>
 					<Link to='/profile'>
 						<div className='flex flex-col items-center justify-center ml-2 md:ml-4'>
-							<img className='rounded-full' src={Avatar} alt='' />
+							<Profile className='rounded-full' />
 							<div className='text-main hidden md:block'>Hesabım</div>
 						</div>
 					</Link>

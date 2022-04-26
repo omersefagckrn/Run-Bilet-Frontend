@@ -3,12 +3,13 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper';
 
+import { Logo } from '../../assets';
+
 import Swipers from '../../assets/swiper.svg';
-import Logo from '../../assets/logo.svg';
 
 const Banner = () => {
 	return (
-		<div className='mt-4 bg-[#f4fdff]'>
+		<div className='mt-4 bg-banner'>
 			<Swiper
 				slidesPerView={2.7}
 				spaceBetween={10}
@@ -26,8 +27,8 @@ const Banner = () => {
 					<SwiperSlide key={i}>
 						{({ isActive }) => (
 							<div className='relative'>
-								<img className={`${isActive && 'mt-5'} w-full`} src={Swipers} alt='' />
-								<img className='absolute bottom-0 w-9 h-9 object-scale-down' src={Logo} alt='' />
+								<img src={Swipers} alt='' className={`${isActive && 'mt-5'} w-full`} />
+								<Logo className='absolute bottom-0 w-9 h-9 object-scale-down' />
 							</div>
 						)}
 					</SwiperSlide>
