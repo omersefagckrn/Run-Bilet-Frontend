@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MainFilter = () => {
+const Filter = () => {
 	return (
 		<div className='flex items-start md:items-center justify-start md:justify-center scrollbar select-none mt-4 bg-filter'>
 			<div className='ml-4 md:ml-0 mb-4'>
@@ -23,4 +23,4 @@ const MainFilter = () => {
 	);
 };
 
-export default MainFilter;
+export default Filter;

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Logo } from '../../assets/';
 
-const Cards = () => {
+const Activities = () => {
 	return (
 		<>
 			<div className='ml-4 mt-4 mr-4'>
@@ -59,4 +59,4 @@ const Cards = () => {
 	);
 };
 
-export default Cards;
+export default Activities;

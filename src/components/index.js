@@ -1,5 +1,7 @@
 import { Panel } from './Organizer';
 import { Navbar } from './Navbar';
-import { Banner, MainFilter, Cards, CreateActivity } from './Home';
+import { Banner, Filter, Activities, CreateActivity } from './Home';
+import { Cards, Card } from './Cards';
+import { CardDetail } from './CardDetail';
 
-export { Panel, Navbar, Banner, MainFilter, Cards, CreateActivity };
+export { Panel, Navbar, Banner, Filter, Activities, Cards, CreateActivity, CardDetail, Card };

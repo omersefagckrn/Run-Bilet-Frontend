@@ -1,6 +1,6 @@
 import Banner from './Banner';
-import Cards from './Cards';
+import Activities from './Activities';
 import CreateActivity from './CreateActivity';
-import MainFilter from './MainFilter';
+import Filter from './Filter';
 
-export { Banner, Cards, CreateActivity, MainFilter };
+export { Banner, Activities, CreateActivity, Filter };

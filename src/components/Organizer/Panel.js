@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader } from 'react-pro-sidebar';
+
 import { MenuRoute } from './Menu';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -17,7 +17,7 @@ const Panel = () => {
 
 	return (
 		<div className='min-h-screen flex'>
-			<ProSidebar className={`${isOpen ? 'hidden' : 'block'} select-none`}>
+			<ProSidebar className={`${isOpen ? 'hidden' : 'block'} select-none cursor-pointer`}>
 				<SidebarHeader className='mt-4 ml-5'>
 					<Link to='/' className='text-main font-medium text-3xl'>
 						Runbilet
@@ -50,7 +50,6 @@ const Panel = () => {
 						Etkinlik Oluştur
 					</MenuItem>
 				</Menu>
-
 				<Menu>
 					<SubMenu icon={<Organization />} title='Organizasyonum'>
 						<MenuItem icon={<Account />}>
@@ -76,7 +75,6 @@ const Panel = () => {
 						Sistem Mesajları
 					</MenuItem>
 				</Menu>
-
 				<Menu>
 					<MenuItem icon={<Info />}>
 						<Link to='info' />
@@ -94,13 +92,12 @@ const Panel = () => {
 					</MenuItem>
 				</Menu>
 			</ProSidebar>
-
 			<div className='flex-1 bg-[#fff]'>
 				<div className='flex items-center justify-between'>
 					<button onClick={showMenu}>{isOpen ? <GiHamburgerMenu className='text-main' size={30} /> : <AiOutlineClose className='text-main' size={30} />}</button>
 					<div className='text-3xl mt-4 text-center flex-1 text-main font-medium select-none'>
 						{MenuRoute.map((_route, i) => (
-							<span key={i}>{location.pathname.split('/')[3] === _route.route && _route.title}</span>
+							<div key={i}>{location.pathname.split('/')[3] === _route.route && _route.title}</div>
 						))}
 					</div>
 				</div>
