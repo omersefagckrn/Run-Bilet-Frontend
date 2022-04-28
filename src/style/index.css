@@ -37,7 +37,7 @@
 	background-image: linear-gradient(to bottom, #f4fdff 0%, #fff 100%);
 }
 
-.bg-navbar {
+.bg-nav {
 	-webkit-backdrop-filter: blur(4px);
 	backdrop-filter: blur(4px);
 	background-image: linear-gradient(to bottom, #f4fdff 0%, #fff 100%);

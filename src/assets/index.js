@@ -23,5 +23,6 @@ import { ReactComponent as RunTicket } from './runTicket.svg';
 import { ReactComponent as Avatar } from './avatar.svg';
 import { ReactComponent as Swipers } from './swiper.svg';
 import { ReactComponent as Profile } from './profile.svg';
+import { ReactComponent as Share } from './share.svg';
 
-export { RunTicket, Profile, Swipers, Avatar, Logo, Dropdown, QrCode, ActiveActivity, ActiveHome, ActiveTicket, Search, TicketOffice, Moderation, Ticket, Notification, Activity, Organization, Updates, Info, Help, Home, Account, Locations, FinancialDetails, ContactInfo };
+export { RunTicket, Share, Profile, Swipers, Avatar, Logo, Dropdown, QrCode, ActiveActivity, ActiveHome, ActiveTicket, Search, TicketOffice, Moderation, Ticket, Notification, Activity, Organization, Updates, Info, Help, Home, Account, Locations, FinancialDetails, ContactInfo };

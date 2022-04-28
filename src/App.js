@@ -1,6 +1,7 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import { Panel } from './components';
+import { Panel, CardDetail } from './components';
 import { Activities, Home, Tickets, TicketOffice, Help } from './pages';
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/tickets' element={<Tickets />} />
+				<Route path='/cards/:id' element={<CardDetail />} />
 
 				<Route path='organizer/:id' element={<Panel />}>
 					<Route index element={<Navigate to='ticket-office' replace />} />

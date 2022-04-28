@@ -7,7 +7,7 @@ import './index.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'react-pro-sidebar/dist/css/styles.css';
-import './styles/index.css';
+import './style/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
