@@ -1,2 +1,4 @@
 import * as usersAction from './users';
-export { usersAction };
+import * as eventsAction from './events';
+import * as organisatorsAction from './organisators';
+export { usersAction, eventsAction, organisatorsAction };

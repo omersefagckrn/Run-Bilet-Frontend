@@ -13,8 +13,7 @@ export default class ApiHelper {
 	}
 	headerBuilder({ header }) {
 		return {
-			...header,
-			'Content-Type': 'application/json'
+			...header
 		};
 	}
 
