@@ -24,5 +24,7 @@ import { ReactComponent as Avatar } from './avatar.svg';
 import { ReactComponent as Swipers } from './swiper.svg';
 import { ReactComponent as Profile } from './profile.svg';
 import { ReactComponent as Share } from './share.svg';
+import { ReactComponent as TicketWhite } from './ticketWhite.svg';
+import { ReactComponent as Selection } from './selection.svg';
 
-export { RunTicket, Share, Profile, Swipers, Avatar, Logo, Dropdown, QrCode, ActiveActivity, ActiveHome, ActiveTicket, Search, TicketOffice, Moderation, Ticket, Notification, Activity, Organization, Updates, Info, Help, Home, Account, Locations, FinancialDetails, ContactInfo };
+export { RunTicket, Selection, Share, TicketWhite, Profile, Swipers, Avatar, Logo, Dropdown, QrCode, ActiveActivity, ActiveHome, ActiveTicket, Search, TicketOffice, Moderation, Ticket, Notification, Activity, Organization, Updates, Info, Help, Home, Account, Locations, FinancialDetails, ContactInfo };

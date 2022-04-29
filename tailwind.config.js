@@ -7,7 +7,8 @@ module.exports = {
 			main: '#53525E',
 			title: '#241f1f',
 			whites: '#fafafa',
-			green: '#0b5c22'
+			green: '#0b5c22',
+			black: '#241f1f'
 		}
 	},
 	plugins: [require('tailwind-scrollbar')]
