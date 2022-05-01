@@ -11,7 +11,7 @@ const CardDetail = () => {
 	return (
 		<>
 			<Navbar />
-			<div className='flex items-center justify-center bg-primary h-12 mt-24 select-none'>
+			<div className='flex items-center justify-center bg-primary h-12 mt-32 md:mt-24 select-none'>
 				<div className='w-44'>
 					<div className='flex flex-col bg-whites'>
 						<div className='flex relative flex-col'>
@@ -68,7 +68,7 @@ const CardDetail = () => {
 							</div>
 						</div>
 					</div>
-					<div className='flex items-start flex-col justify-start w-[22rem] space-y-4 mb-10'>
+					<div className='flex items-start flex-col justify-start w-[20rem] space-y-4 mb-10'>
 						<img className='select-none' src='https://picsum.photos/400/300' alt='' />
 						<div className='text-main text-xs text-left'>
 							İstanbul, Üsküdar Bağlarbaşı Metro istasyon girişinin yanı Beklenen Etkinlik Süresi: 4 saat <br /> Arcu duis placerat scelerisque dolor sed feugiat tristique. Porttitor egestas faucibus fusce turpis. Massa, neque, integer euismod ornare tellus. Consequat aliquet feugiat quis nullam augue viverra viverra venenatis sed. Massa ac a
@@ -78,7 +78,7 @@ const CardDetail = () => {
 						</div>
 						{[1, 2, 3].map(() => (
 							<div className='flex select-none'>
-								<div className='text-main bg-whites p-3 w-[16rem]'>Normal Bilet</div>
+								<div className='text-main bg-whites p-3 w-[14rem]'>Normal Bilet</div>
 								<div className='text-whites bg-main p-3 w-[6rem]'>12000 TL</div>
 							</div>
 						))}

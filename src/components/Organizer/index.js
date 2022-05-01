@@ -1,4 +1,5 @@
 import Panel from './Panel';
-import { MenuRoute } from './Menu';
+import Sidebar from './Sidebar';
+import { MenuRoute, MobileMenuRoute } from './Routes';
 
-export { Panel, MenuRoute };
+export { Panel, Sidebar, MenuRoute, MobileMenuRoute };

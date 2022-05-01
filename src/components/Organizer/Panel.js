@@ -1,103 +1,47 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader } from 'react-pro-sidebar';
+import { Menu as HeadlessMenu, Transition } from '@headlessui/react';
 
-import { MenuRoute } from './Menu';
+import { Sidebar } from '..';
+import { MenuRoute, MobileMenuRoute } from '../';
 
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { AiOutlineClose } from 'react-icons/ai';
-
-import { TicketOffice, Moderation, Ticket, Notification, Activity, Organization, Updates, Info, Help, Home, Account, Locations, FinancialDetails, ContactInfo } from '../../assets';
+import { Profile } from '../../assets';
 
 const Panel = () => {
-	const [isOpen, setIsOpen] = useState(false);
-	const showMenu = () => setIsOpen(!isOpen);
-
 	const location = useLocation();
 
 	return (
 		<div className='min-h-screen flex'>
-			<ProSidebar className={`${isOpen ? 'hidden' : 'block'} select-none cursor-pointer`}>
-				<SidebarHeader className='mt-4 ml-5'>
+			<Sidebar />
+			<div className='flex-1 bg-[#fff]'>
+				<div className='flex items-center justify-between m-4 md:hidden'>
 					<Link to='/' className='text-main font-medium text-3xl'>
 						Runbilet
 					</Link>
-				</SidebarHeader>
-				<Menu>
-					<MenuItem icon={<TicketOffice />}>
-						<Link to='ticket-office' />
-						Bilet Gişesi
-					</MenuItem>
-
-					<MenuItem icon={<Moderation />}>
-						<Link to='moderation' />
-						Moderasyon
-					</MenuItem>
-				</Menu>
-				<Menu>
-					<MenuItem icon={<Ticket />}>
-						<Link to='activities' />
-						Etkinliklerim
-					</MenuItem>
-
-					<MenuItem icon={<Notification />}>
-						<Link to='notifications' />
-						Etkinlik Bildirimleri
-					</MenuItem>
-
-					<MenuItem icon={<Activity />}>
-						<Link to='create-activity' />
-						Etkinlik Oluştur
-					</MenuItem>
-				</Menu>
-				<Menu>
-					<SubMenu icon={<Organization />} title='Organizasyonum'>
-						<MenuItem icon={<Account />}>
-							Firma Kimliğim
-							<Link to='company-identity' />
-						</MenuItem>
-						<MenuItem icon={<Locations />}>
-							Etkinlik Mesajları
-							<Link to='event-venues' />
-						</MenuItem>
-						<MenuItem icon={<FinancialDetails />}>
-							Tahsilat Bilgilerim
-							<Link to='financial-details' />
-						</MenuItem>
-
-						<MenuItem icon={<ContactInfo />}>
-							İletişim Bilgilerim
-							<Link to='contact' />
-						</MenuItem>
-					</SubMenu>
-					<MenuItem icon={<Updates />}>
-						<Link to='updates' />
-						Sistem Mesajları
-					</MenuItem>
-				</Menu>
-				<Menu>
-					<MenuItem icon={<Info />}>
-						<Link to='info' />
-						Sık Sorulan Sorular
-					</MenuItem>
-
-					<MenuItem icon={<Help />}>
-						<Link to='help' />
-						Yardım ve İletişim
-					</MenuItem>
-
-					<MenuItem icon={<Home />}>
-						<Link to='/' />
-						Anasayfaya Dön
-					</MenuItem>
-				</Menu>
-			</ProSidebar>
-			<div className='flex-1 bg-[#fff]'>
+					<HeadlessMenu>
+						<HeadlessMenu.Button>
+							<Profile className='h-8 w-8' />
+						</HeadlessMenu.Button>
+						<Transition className='absolute cursor-pointer w-52 mt-[38rem] bg-tickets right-0 z-50 mr-4' enter='transition ease-out duration-100' enterFrom='transform opacity-0 scale-95' enterTo='transform opacity-100 scale-100' leave='transition ease-in duration-75' leaveFrom='transform opacity-100 scale-100' leaveTo='transform opacity-0 scale-95'>
+							<HeadlessMenu.Items>
+								{MobileMenuRoute.map((Route, i) => (
+									<Link to={Route.route} className='text-main'>
+										<HeadlessMenu.Item key={i}>
+											<div className='flex items-center justify-start ml-2 space-x-2 py-4'>
+												<Route.Image className='h-6 w-6' />
+												<div className='ml-2'>{Route.title}</div>
+											</div>
+										</HeadlessMenu.Item>
+									</Link>
+								))}
+							</HeadlessMenu.Items>
+						</Transition>
+					</HeadlessMenu>
+				</div>
 				<div className='flex items-center justify-between'>
-					<button onClick={showMenu}>{isOpen ? <GiHamburgerMenu className='text-main' size={30} /> : <AiOutlineClose className='text-main' size={30} />}</button>
 					<div className='text-3xl mt-4 text-center flex-1 text-main font-medium select-none'>
-						{MenuRoute.map((_route, i) => (
-							<div key={i}>{location.pathname.split('/')[3] === _route.route && _route.title}</div>
+						{MenuRoute.map((Route, index) => (
+							<div key={index}>{location.pathname.split('/')[3] === Route.route && Route.title}</div>
 						))}
 					</div>
 				</div>

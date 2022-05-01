@@ -34,7 +34,7 @@ const Activities = () => {
 					grabCursor={true}>
 					{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((_item, i) => (
 						<SwiperSlide key={i}>
-							<div className='bg-whites mt-4 mb-4'>
+							<div className='bg-whites mt-4 mb-4 w-44'>
 								<div className='flex flex-col'>
 									<div className='flex relative flex-col'>
 										<img className='h-24' src='https://picsum.photos/800/100' alt='' />

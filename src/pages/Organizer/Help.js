@@ -24,13 +24,13 @@ const Help = () => {
 			<div className='flex items-start justify-center select-none'>
 				<div className='grid md:grid-cols-2 gap-4'>
 					{data.map((_item, index) => (
-						<div className='w-[20rem] md:w-[25rem]'>
+						<span className='w-[20rem] md:w-[25rem]'>
 							<div className='bg-whites flex items-start justify-between p-2'>
 								<div className='text-main'>{_item.title}</div>
 								<button className='ml-2'>{currentDropdown !== index ? <Dropdown onClick={() => setShowDropdown(index)} /> : <Dropdown className='rotate-180' onClick={() => setShowDropdown(null)} />}</button>
 							</div>
 							{currentDropdown === index && <div className='text-main font-normal bg-whites p-2'>{_item.description}</div>}
-						</div>
+						</span>
 					))}
 				</div>
 			</div>

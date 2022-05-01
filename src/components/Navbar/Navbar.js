@@ -54,10 +54,10 @@ const Navbar = ({ Tab }) => {
 						</Menu.Button>
 						<Transition className='absolute bg-nav right-0 mt-16 z-50 mr-4' enter='transition ease-out duration-100' enterFrom='transform opacity-0 scale-95' enterTo='transform opacity-100 scale-100' leave='transition ease-in duration-75' leaveFrom='transform opacity-100 scale-100' leaveTo='transform opacity-0 scale-95'>
 							<Menu.Items>
-								{routeMatch.map((_route, index) => (
+								{routeMatch.map((Route, index) => (
 									<Menu.Item key={index}>
-										<Link to={_route.route} className={`${_route.name === 'Kayıt Ol / Giriş Yap' ? 'text-green' : 'text-main'} hover:text-whites hover:bg-main bg-white flex px-4 py-2`}>
-											{_route.name}
+										<Link to={Route.route} className={`${Route.name === 'Kayıt Ol / Giriş Yap' ? 'text-green' : 'text-main'} hover:text-whites hover:bg-main bg-white flex px-4 py-2`}>
+											{Route.name}
 										</Link>
 									</Menu.Item>
 								))}
