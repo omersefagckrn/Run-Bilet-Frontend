@@ -21,7 +21,7 @@ export default class ApiHelper {
 		if (response.ok) return { ok: response.ok, status: response.status, data: await response.json() };
 		else return { ok: response.ok, status: response.status, data: await response.json() };
 	}
-	async request({ method, endpoint, body = null, headers = null, params = null }) {
+	async request({ method, endpoint, body = null, headers, params = null }) {
 		const opt = {
 			method,
 			headers: this.headerBuilder({ headers }),
@@ -29,7 +29,20 @@ export default class ApiHelper {
 		};
 		return await this.responseHandler(await fetch(this.endPointBuilder(endpoint, params), opt));
 	}
-	async post({ endpoint, body = null, headers = null, params = null }) {
+	async post({ endpoint, body = null, params = null }) {
+		let headers;
+		if (endpoint != 'users/upload-profile-image') {
+			headers = {
+				'Content-Type': 'application/json',
+				Authorization: 'token'
+			};
+		} else {
+			headers = {
+				'Content-Type': 'multipart/form-data',
+				Authorization: 'token'
+			};
+		}
+
 		return await this.request({
 			method: 'POST',
 			endpoint,
@@ -38,24 +51,25 @@ export default class ApiHelper {
 			params
 		});
 	}
-	async get({ endpoint, body = null, headers = null, params = null }) {
+	async get({ endpoint, body = null, params = null }) {
 		return await this.request({
 			method: 'GET',
 			endpoint,
-			body: null,
+			body: body,
 			headers,
 			params: params
 		});
 	}
-	async delete({ endpoint, body = null, params = null, headers = null }) {
+	async delete({ endpoint, body = null, params = null }) {
 		return await this.request({
 			method: 'DELETE',
 			endpoint,
 			headers,
+			body,
 			params
 		});
 	}
-	async patch({ endpoint, body = null, headers = null, params = null }) {
+	async patch({ endpoint, body = null, params = null }) {
 		return await this.request({
 			method: 'PATCH',
 			endpoint,

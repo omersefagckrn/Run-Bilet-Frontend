@@ -2,7 +2,7 @@
 import { combineReducers, applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { eventReducers, usersReducers } from '../reducers';
+import { eventReducers, usersReducers, organisatorsReducers } from '../reducers';
 
 const logger = createLogger();
 // this rootReducer will be combined all of api endpoint reducers
@@ -24,6 +24,12 @@ export const rootReducer = combineReducers({
 		userEventList: eventReducers.userEventListReducer,
 		createEvent: eventReducers.createEventReducer,
 		updateEvent: eventReducers.updateEventReducer
+	}),
+	organisators: combineReducers({
+		createOrganisator: organisatorsReducers.createOrganisatorReducer,
+		updateOrganisator: organisatorsReducers.updateOrganisatorReducer,
+		getOrganisatorList: organisatorsReducers.getOrganisatorListReducer,
+		removeOrganisator: organisatorsReducers.removeOrganisatorReducer
 	})
 });
 const middlewares = applyMiddleware(thunk, logger);
