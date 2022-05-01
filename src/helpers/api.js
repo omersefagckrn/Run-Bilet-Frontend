@@ -31,7 +31,7 @@ export default class ApiHelper {
 	}
 	async post({ endpoint, body = null, params = null }) {
 		let headers;
-		if (endpoint != 'users/upload-profile-image') {
+		if (endpoint !== 'users/upload-profile-image') {
 			headers = {
 				'Content-Type': 'application/json',
 				Authorization: 'token'
@@ -51,7 +51,7 @@ export default class ApiHelper {
 			params
 		});
 	}
-	async get({ endpoint, body = null, params = null }) {
+	async get({ endpoint, body = null, params = null, headers }) {
 		return await this.request({
 			method: 'GET',
 			endpoint,
@@ -60,7 +60,7 @@ export default class ApiHelper {
 			params: params
 		});
 	}
-	async delete({ endpoint, body = null, params = null }) {
+	async delete({ endpoint, body = null, params = null, headers }) {
 		return await this.request({
 			method: 'DELETE',
 			endpoint,
@@ -69,7 +69,7 @@ export default class ApiHelper {
 			params
 		});
 	}
-	async patch({ endpoint, body = null, params = null }) {
+	async patch({ endpoint, body = null, params = null, headers }) {
 		return await this.request({
 			method: 'PATCH',
 			endpoint,
