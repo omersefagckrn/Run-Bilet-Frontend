@@ -2,11 +2,11 @@ import { api } from '../../helpers';
 import { usersConstants } from '../../constants';
 
 export const updateUserAction =
-	({ full_name }) =>
+	({ full_name, params }) =>
 	async (dispatch) => {
 		dispatch({ type: usersConstants.UPDATE_USER_REQUEST, request: { full_name } });
 
-		const response = await api.patch({ endpoint: 'users', body: { full_name } });
+		const response = await api.patch({ endpoint: 'users', body: { full_name }, params: { params } });
 		if (response.ok) return dispatch({ type: usersConstants.UPDATE_USER_SUCCESS, data: response.data });
 		else return dispatch({ type: usersConstants.UPDATE_USER_ERROR, data: response.data });
 	};
