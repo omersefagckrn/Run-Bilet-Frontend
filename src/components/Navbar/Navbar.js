@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
 
 import { Home, RunTicket, Profile, Ticket, Activity, ActiveActivity, ActiveHome, ActiveTicket, Search } from '../../assets';
+import { Modal } from '..';
 
 const Navbar = ({ Tab }) => {
 	const routeMatch = [
@@ -57,7 +58,12 @@ const Navbar = ({ Tab }) => {
 								{routeMatch.map((Route, index) => (
 									<Menu.Item key={index}>
 										<Link to={Route.route} className={`${Route.name === 'Kayıt Ol / Giriş Yap' ? 'text-green' : 'text-main'} hover:text-whites hover:bg-main bg-white flex px-4 py-2`}>
-											{Route.name}
+											<div
+												onClick={() => {
+													if (Route.name === 'Kayıt Ol / Giriş Yap') Modal.LoginModal();
+												}}>
+												{Route.name}
+											</div>
 										</Link>
 									</Menu.Item>
 								))}

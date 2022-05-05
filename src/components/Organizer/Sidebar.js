@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader } from 'react-pro-sidebar';
 
-import { TicketOffice, Moderation, Ticket, Notification, Activity, Organization, Updates, Info, Help, Home, Account, Locations, FinancialDetails, ContactInfo, Profile } from '../../assets';
+import { TicketOffice, Moderation, Ticket, Notification, Activity, Organization, Updates, Info, Help, Home, Account, Locations, FinancialDetails, ContactInfo } from '../../assets';
 
 const Sidebar = () => {
 	return (
