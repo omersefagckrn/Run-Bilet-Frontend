@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Banner, Navbar, Filter, Activities, CreateActivity } from '../../components';
+import { Banner, Navbar, Filter, Activities, CreateActivity, Footer } from '../../components';
 
 const Home = () => {
 	return (
@@ -11,6 +11,7 @@ const Home = () => {
 			<Activities />
 			<CreateActivity />
 			<Activities />
+			<Footer />
 		</>
 	);
 };

@@ -44,19 +44,34 @@ const LoginCardDetail = () => {
 									</div>
 								</div>
 								{isOpen === index && (
-									<div className='flex items-start justify-between p-2 mt-2'>
-										<div className='text-main space-y-3 ml-4'>
-											<div>+90 (555) 528 78 24 {`${index && index}`}</div>
-											<div>452152333289</div>
-											<div>HEKS6SCX</div>
+									<>
+										<div className='flex items-start justify-between mt-2'>
+											<div className='text-main space-y-4'>
+												<div className='flex items-center justify-between'>
+													<div>TLF:</div>
+													<div className='ml-8'>+90 (555) 528 78 24</div>
+												</div>
+												<div className='flex items-center justify-between'>
+													<div>TCN:</div>
+													<div className='ml-8'>452152333289</div>
+												</div>
+												<div className='flex items-center justify-between'>
+													<div>HES:</div>
+													<div className='ml-8'>HEKS6SCX</div>
+												</div>
+											</div>
+											<QrCode className='w-24 h-auto' />
 										</div>
-										<QrCode className='w-24 h-auto' />
-									</div>
+										<div className='flex items-center justify-between mt-3'>
+											<div className='text-main'>BNU:</div>
+											<div className='text-black text-2xl font-medium'>D9NJWSD90DSLD2</div>
+										</div>
+									</>
 								)}
 							</div>
 						))}
 					</div>
-					<div className='text-center space-y-4 mt-16 cursor-pointer'>
+					<div className='text-center space-y-4 mt-16 mb-4 cursor-pointer'>
 						<div className='text-main bg-whites p-3'>Ayrıntıları Gizle / Göster</div>
 						<div className='text-main bg-whites p-3'>PDF olarak Kaydet</div>
 						<div className='text-main bg-whites p-3'>Yazdır</div>

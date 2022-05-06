@@ -1,5 +1,5 @@
 import { Home } from './Home';
 import { Tickets } from './Tickets';
-import { Activities, TicketOffice, Help } from './Organizer';
+import { Activities, TicketOffice, Help, Notifications } from './Organizer';
 
-export { Home, Tickets, Activities, TicketOffice, Help };
+export { Home, Tickets, Activities, TicketOffice, Help, Notifications };

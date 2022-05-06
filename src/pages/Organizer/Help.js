@@ -22,15 +22,22 @@ const Help = () => {
 				</div>
 			</div>
 			<div className='flex items-start justify-center select-none'>
-				<div className='grid md:grid-cols-2 gap-4'>
-					{data.map((_item, index) => (
-						<span className='w-[20rem] md:w-[25rem]'>
-							<div className='bg-whites flex items-start justify-between p-2'>
-								<div className='text-main'>{_item.title}</div>
-								<button className='ml-2'>{currentDropdown !== index ? <Dropdown onClick={() => setShowDropdown(index)} /> : <Dropdown className='rotate-180' onClick={() => setShowDropdown(null)} />}</button>
-							</div>
-							{currentDropdown === index && <div className='text-main font-normal bg-whites p-2'>{_item.description}</div>}
-						</span>
+				<div className='grid md:grid-cols-2 md:gap-4'>
+					{[1, 2, 3, 4].map(() => (
+						<>
+							<span>
+								<div className='text-3xl font-medium mb-1'>Genel Bilgi</div>
+								{data.map((_item, index) => (
+									<div className='mb-2' key={index}>
+										<div className='bg-whites flex items-start justify-between p-2 w-[20rem] md:w-[25rem]'>
+											<div className='text-main'>{_item.title}</div>
+											<button className='ml-2'>{currentDropdown !== _item.id ? <Dropdown onClick={() => setShowDropdown(_item.id)} /> : <Dropdown className='rotate-180' onClick={() => setShowDropdown(null)} />}</button>
+										</div>
+										{currentDropdown === _item.id && <div className='text-black font-normal bg-whites p-2 w-[20rem] md:w-[25rem]'>{_item.description}</div>}
+									</div>
+								))}
+							</span>
+						</>
 					))}
 				</div>
 			</div>

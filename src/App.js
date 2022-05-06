@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { Panel, CardDetail, LoginCardDetail } from './components';
-import { Activities, Home, Tickets, TicketOffice, Help } from './pages';
+import { Activities, Home, Tickets, TicketOffice, Help, Notifications } from './pages';
 
 const App = () => {
 	return (
@@ -18,6 +18,7 @@ const App = () => {
 					<Route path='ticket-office' element={<TicketOffice />} />
 					<Route path='activities' element={<Activities />} />
 					<Route path='help' element={<Help />} />
+					<Route path='notifications' element={<Notifications />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

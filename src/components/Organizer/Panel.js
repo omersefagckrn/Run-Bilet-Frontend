@@ -22,11 +22,11 @@ const Panel = () => {
 						<HeadlessMenu.Button>
 							<Profile className='h-8 w-8' />
 						</HeadlessMenu.Button>
-						<Transition className='absolute cursor-pointer w-52 mt-[38rem] bg-tickets right-0 z-50 mr-4' enter='transition ease-out duration-100' enterFrom='transform opacity-0 scale-95' enterTo='transform opacity-100 scale-100' leave='transition ease-in duration-75' leaveFrom='transform opacity-100 scale-100' leaveTo='transform opacity-0 scale-95'>
+						<Transition className='absolute cursor-pointer w-52 mt-[28rem] bg-tickets right-0 z-50 mr-4' enter='transition ease-out duration-100' enterFrom='transform opacity-0 scale-95' enterTo='transform opacity-100 scale-100' leave='transition ease-in duration-75' leaveFrom='transform opacity-100 scale-100' leaveTo='transform opacity-0 scale-95'>
 							<HeadlessMenu.Items>
 								{MobileMenuRoute.map((Route, i) => (
-									<Link to={Route.route} className='text-main'>
-										<HeadlessMenu.Item key={i}>
+									<Link key={i} to={Route.route} className='text-main'>
+										<HeadlessMenu.Item>
 											<div className='flex items-center justify-start ml-2 space-x-2 py-4'>
 												<Route.Image className='h-6 w-6' />
 												<div className='ml-2'>{Route.title}</div>

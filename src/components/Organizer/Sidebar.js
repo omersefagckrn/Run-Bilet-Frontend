@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader } from 'react-pro-sidebar';
 
-import { TicketOffice, Moderation, Ticket, Notification, Activity, Organization, Updates, Info, Help, Home, Account, Locations, FinancialDetails, ContactInfo } from '../../assets';
+import { TicketOffice, Ticket, Notification, Activity, Organization, Help, Home, Account, Locations, FinancialDetails } from '../../assets';
 
 const Sidebar = () => {
 	return (
@@ -18,59 +18,35 @@ const Sidebar = () => {
 						<Link to='ticket-office' />
 						Bilet Gişesi
 					</MenuItem>
-
-					<MenuItem icon={<Moderation />}>
-						<Link to='moderation' />
-						Moderasyon
-					</MenuItem>
-				</Menu>
-				<Menu>
 					<MenuItem icon={<Ticket />}>
 						<Link to='activities' />
 						Etkinliklerim
 					</MenuItem>
-
-					<MenuItem icon={<Notification />}>
-						<Link to='notifications' />
-						Etkinlik Bildirimleri
-					</MenuItem>
-
 					<MenuItem icon={<Activity />}>
 						<Link to='create-activity' />
 						Etkinlik Oluştur
 					</MenuItem>
-				</Menu>
-				<Menu>
+
 					<SubMenu icon={<Organization />} title='Organizasyonum'>
 						<MenuItem icon={<Account />}>
 							Firma Kimliğim
 							<Link to='company-identity' />
-						</MenuItem>
-						<MenuItem icon={<Locations />}>
-							Etkinlik Mesajları
-							<Link to='event-venues' />
 						</MenuItem>
 						<MenuItem icon={<FinancialDetails />}>
 							Tahsilat Bilgilerim
 							<Link to='financial-details' />
 						</MenuItem>
 
-						<MenuItem icon={<ContactInfo />}>
-							İletişim Bilgilerim
-							<Link to='contact' />
+						<MenuItem icon={<Locations />}>
+							Etkinlik Mekanlarım
+							<Link to='location' />
 						</MenuItem>
 					</SubMenu>
-					<MenuItem icon={<Updates />}>
-						<Link to='updates' />
-						Sistem Mesajları
-					</MenuItem>
-				</Menu>
-				<Menu>
-					<MenuItem icon={<Info />}>
-						<Link to='info' />
-						Sık Sorulan Sorular
-					</MenuItem>
 
+					<MenuItem icon={<Notification />}>
+						<Link to='notifications' />
+						Bildirimler
+					</MenuItem>
 					<MenuItem icon={<Help />}>
 						<Link to='help' />
 						Yardım ve İletişim

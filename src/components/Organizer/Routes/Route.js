@@ -1,4 +1,4 @@
-import { Activity, Help, Home, Info, Moderation, Notification, Organization, Ticket, TicketOffice, Updates } from '../../../assets';
+import { Activity, Help, Home, Notification, Organization, Ticket, TicketOffice } from '../../../assets';
 
 export const MobileMenuRoute = [
 	{
@@ -7,20 +7,11 @@ export const MobileMenuRoute = [
 		title: 'Bilet Gişesi'
 	},
 	{
-		Image: Moderation,
-		route: 'moderation',
-		title: 'Moderasyon'
-	},
-	{
 		Image: Ticket,
 		title: 'Etkinliklerim',
 		route: 'activities'
 	},
-	{
-		Image: Notification,
-		title: 'Etkinlik Bildirimleri',
-		route: 'notifications'
-	},
+
 	{
 		Image: Activity,
 		title: 'Etkinlik Oluştur',
@@ -32,14 +23,9 @@ export const MobileMenuRoute = [
 		route: '/organizer/:id'
 	},
 	{
-		Image: Updates,
-		title: 'Sistem Mesajları',
-		route: 'updates'
-	},
-	{
-		Image: Info,
-		title: 'Sık Sorulan Sorular',
-		route: 'info'
+		Image: Notification,
+		title: 'Bildirimler',
+		route: 'notifications'
 	},
 	{
 		Image: Help,
@@ -63,45 +49,32 @@ export const MenuRoute = [
 		route: 'ticket-office'
 	},
 	{
-		title: 'Moderasyon',
-		route: 'moderation'
-	},
-	{
 		title: 'Etkinliklerim',
 		route: 'activities'
-	},
-	{
-		title: 'Etkinlik Bildirimleri',
-		route: 'notifications'
 	},
 	{
 		title: 'Etkinlik Oluştur',
 		route: 'create-activity'
 	},
+
 	{
 		title: 'Firma Kimliğim',
 		route: 'company-identity'
-	},
-	{
-		title: 'Etkinlik Mesajları',
-		route: 'event-venues'
 	},
 	{
 		title: 'Tahsilat Bilgilerim',
 		route: 'financial-details'
 	},
 	{
-		title: 'İletişim Bilgilerim',
-		route: 'contact'
+		title: 'Etkinlik Mekanlarım',
+		route: 'location'
 	},
+
 	{
-		title: 'Sistem Mesajları',
-		route: 'updates'
+		title: 'Bildirimler',
+		route: 'notifications'
 	},
-	{
-		title: 'Sık Sorulan Sorular',
-		route: 'info'
-	},
+
 	{
 		title: 'Yardım ve İletişim',
 		route: 'help'

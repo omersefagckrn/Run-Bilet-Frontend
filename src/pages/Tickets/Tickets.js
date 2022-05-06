@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Cards, Navbar } from '../../components';
+import { Cards, Footer, Navbar } from '../../components';
 
 const Tickets = () => {
 	return (
@@ -14,6 +14,7 @@ const Tickets = () => {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 };
