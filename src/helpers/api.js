@@ -5,67 +5,67 @@ export default class ApiHelper {
 		this.endPointBuilder = this.endPointBuilder.bind(this);
 		this.responseHandler = this.responseHandler.bind(this);
 		this.request = this.request.bind(this);
-		this.headerBuilder = this.headerBuilder.bind(this);
+		
 	}
-	endPointBuilder(endPoint, params = null) {
+	endPointBuilder(endPoint, params = '') {
 		// handling endpoint with params
 		// localhost300 will be turned in environment variable when api deployed
-		return `http://localhost:3000/${endPoint}/${params ? `${params}` : ''}`;
+		if (params !== '') {
+			return `http://localhost:3000/${endPoint}?${params}`;
+		} else {
+			return `http://localhost:3000/${endPoint}`;
+		}
 	}
-	headerBuilder({ header }) {
-		return {
-			...header
-		};
-	}
+
 
 	async responseHandler(response) {
 		if (response.ok) return { ok: response.ok, status: response.status, data: await response.json() };
 		else return { ok: response.ok, status: response.status, data: await response.json() };
 	}
-	async request({ method, endpoint, body = null, params = null }) {
-		const token = StorageHelper.getToken('auth');
+	async request({ method, endpoint, body = null, params = '' }) {
+		const token = StorageHelper.getToken();
 		let headers;
-		if (endpoint !== 'users/upload-profile-image') {
-			headers = {
-				'Content-Type': 'multipart/form-data',
-				Authorization: token
-			};
-		}
-		if (endpoint === 'users/login' || endpoint === 'users/register') {
-			headers = {
-				'Content-Type': 'application/json'
-			};
-		} else {
-			headers = {
-				'Content-Type': 'application/json',
-				Authorization: token
-			};
-		}
-
+			if (endpoint === 'users/upload-profile-image') {
+				headers = {
+					'Content-Type': 'multipart/form-data',
+					'Authorization': token ? token: null
+				};
+			}
+			if (endpoint === 'users/login' || endpoint === 'users/create') {
+				headers = {
+					'Content-Type': 'application/json'
+				};
+			} else {
+				headers = {
+					'Content-Type': 'application/json',
+					'Authorization': token ? token: null
+				};
+			}
+		
 		const opt = {
-			method,
-			headers: this.headerBuilder({ headers }),
-			body: body ? JSON.stringify(body) : null
+			method: method,
+			headers: headers,
+			body: JSON.stringify(body)
 		};
 		return await this.responseHandler(await fetch(this.endPointBuilder(endpoint, params), opt));
+		
 	}
-	async post({ endpoint, body = null, params = null }) {
+	async post({ endpoint, body = null, params = '' }) {
 		return await this.request({
 			method: 'POST',
-			endpoint,
-			body,
-			params
-		});
-	}
-	async get({ endpoint, body = null, params = null }) {
-		return await this.request({
-			method: 'GET',
-			endpoint,
+			endpoint: endpoint,
 			body: body,
 			params: params
 		});
 	}
-	async delete({ endpoint, body = null, params = null }) {
+	async get({ endpoint, params = '' }) {
+		return await this.request({
+			method: 'GET',
+			endpoint,
+			params: params
+		});
+	}
+	async delete({ endpoint, body = null, params = '' }) {
 		return await this.request({
 			method: 'DELETE',
 			endpoint,
@@ -73,10 +73,10 @@ export default class ApiHelper {
 			params
 		});
 	}
-	async patch({ endpoint, body = null, params = null }) {
+	async patch({ endpoint, body = null, params = '' }) {
 		return await this.request({
 			method: 'PATCH',
-			endpoint,
+			endpoint,	
 			body,
 			params
 		});

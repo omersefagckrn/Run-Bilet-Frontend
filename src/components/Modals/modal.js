@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { confirmAlert } from 'react-confirm-alert';
+import { usersAction } from '../../actions';
 import React from 'react';
 
 // import { Mail, Password } from '../../assets';
@@ -10,7 +11,8 @@ const loginSchema = Yup.object({
 	password: Yup.string().required('Lütfen şifrenizi girin.')
 });
 
-const LoginModal = () => {
+
+const LoginModal = ({ dispatch }) => {
 	confirmAlert({
 		customUI: () => {
 			return (
@@ -23,7 +25,7 @@ const LoginModal = () => {
 						initialValues={{ email: '', password: '' }}
 						validationSchema={loginSchema}
 						onSubmit={(values) => {
-							console.log(values);
+							dispatch(usersAction.loginAction({ email: values.email, password: values.password }));
 						}}>
 						{({ handleSubmit, handleChange, values, errors }) => (
 							<form onSubmit={handleSubmit}>

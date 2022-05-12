@@ -17,7 +17,7 @@ export const rootReducer = combineReducers({
 		changePassword: usersReducers.changePasswordReducer,
 		updateUserProfileImage: usersReducers.updateProfileImageReducer,
 		getUserList: usersReducers.getUserListReducer,
-		userMakeOrganisator: usersReducers.userMakeOrganisator
+		userMakeOrganisator: usersReducers.userMakeOrganisatorReducer
 	}),
 	events: combineReducers({
 		eventList: eventReducers.eventListReducer,

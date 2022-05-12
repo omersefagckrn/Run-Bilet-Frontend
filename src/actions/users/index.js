@@ -5,5 +5,5 @@ import { removeUserAction } from './removeUser';
 import { updateUserAction } from './updateUser';
 import { changePasswordAction } from './changePassword';
 import { getUserListAction } from './getUserList';
-import { userMakeOrganisator } from './userMakeOrganisator';
-export { loginAction, resetPasswordAction, userMakeOrganisator, createUserAction, removeUserAction, updateUserAction, changePasswordAction, getUserListAction };
+import { userMakeOrganisatorAction } from './userMakeOrganisator';
+export { loginAction, resetPasswordAction, userMakeOrganisatorAction, createUserAction, removeUserAction, updateUserAction, changePasswordAction, getUserListAction };
