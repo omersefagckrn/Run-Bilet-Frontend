@@ -1,6 +1,8 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { confirmAlert } from 'react-confirm-alert';
+import React from 'react';
+
 // import { Mail, Password } from '../../assets';
 
 const loginSchema = Yup.object({

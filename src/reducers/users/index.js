@@ -6,4 +6,5 @@ import { updateUserReducer } from './updateUser';
 import { changePasswordReducer } from './changePassword';
 import { updateProfileImageReducer } from './updateProfileImage';
 import { getUserListReducer } from './getUserList';
-export { loginReducer, resetPasswordReducer, createUserReducer, removeUserReducer, updateUserReducer, changePasswordReducer, updateProfileImageReducer, getUserListReducer };
+import { userMakeOrganisator } from '../../actions/users';
+export { loginReducer, resetPasswordReducer, userMakeOrganisator, createUserReducer, removeUserReducer, updateUserReducer, changePasswordReducer, updateProfileImageReducer, getUserListReducer };

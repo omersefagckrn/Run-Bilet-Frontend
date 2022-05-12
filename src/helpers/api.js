@@ -1,3 +1,4 @@
+import { StorageHelper } from './';
 export default class ApiHelper {
 	// constructor
 	constructor() {
@@ -21,7 +22,26 @@ export default class ApiHelper {
 		if (response.ok) return { ok: response.ok, status: response.status, data: await response.json() };
 		else return { ok: response.ok, status: response.status, data: await response.json() };
 	}
-	async request({ method, endpoint, body = null, headers, params = null }) {
+	async request({ method, endpoint, body = null, params = null }) {
+		const token = StorageHelper.getToken('auth');
+		let headers;
+		if (endpoint !== 'users/upload-profile-image') {
+			headers = {
+				'Content-Type': 'multipart/form-data',
+				Authorization: token
+			};
+		}
+		if (endpoint === 'users/login' || endpoint === 'users/register') {
+			headers = {
+				'Content-Type': 'application/json'
+			};
+		} else {
+			headers = {
+				'Content-Type': 'application/json',
+				Authorization: token
+			};
+		}
+
 		const opt = {
 			method,
 			headers: this.headerBuilder({ headers }),
@@ -30,51 +50,34 @@ export default class ApiHelper {
 		return await this.responseHandler(await fetch(this.endPointBuilder(endpoint, params), opt));
 	}
 	async post({ endpoint, body = null, params = null }) {
-		let headers;
-		if (endpoint !== 'users/upload-profile-image') {
-			headers = {
-				'Content-Type': 'application/json',
-				Authorization: 'token'
-			};
-		} else {
-			headers = {
-				'Content-Type': 'multipart/form-data',
-				Authorization: 'token'
-			};
-		}
-
 		return await this.request({
 			method: 'POST',
 			endpoint,
 			body,
-			headers,
 			params
 		});
 	}
-	async get({ endpoint, body = null, params = null, headers }) {
+	async get({ endpoint, body = null, params = null }) {
 		return await this.request({
 			method: 'GET',
 			endpoint,
 			body: body,
-			headers,
 			params: params
 		});
 	}
-	async delete({ endpoint, body = null, params = null, headers }) {
+	async delete({ endpoint, body = null, params = null }) {
 		return await this.request({
 			method: 'DELETE',
 			endpoint,
-			headers,
 			body,
 			params
 		});
 	}
-	async patch({ endpoint, body = null, params = null, headers }) {
+	async patch({ endpoint, body = null, params = null }) {
 		return await this.request({
 			method: 'PATCH',
 			endpoint,
 			body,
-			headers,
 			params
 		});
 	}
