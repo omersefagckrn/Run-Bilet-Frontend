@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import { confirmAlert } from 'react-confirm-alert';
 import { usersAction } from '../../actions';
 import Stories from 'react-insta-stories';
+import { Close } from '../../assets';
 
 const loginSchema = Yup.object({
 	email: Yup.string().email().required('Lütfen e-mail adresinizi girin.'),

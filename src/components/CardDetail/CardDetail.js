@@ -1,16 +1,81 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
+import { Link, useParams } from 'react-router-dom';
 
 import { Navbar } from '../';
-import { Logo, Selection, Share, TicketWhite } from '../../assets';
+import { Close, Selection } from '../../assets';
 import { Footer } from '../Home';
 
 const CardDetail = () => {
-	const params = useParams();
-	console.log(params.id);
+	const [isOpen, setIsOpen] = React.useState(false);
+	const handleOpen = () => setIsOpen((prev) => !prev);
+	const { id } = useParams();
+
+	const ChooseTicket = () => {
+		confirmAlert({
+			customUI: ({ onClose }) => {
+				return (
+					<>
+						<div className='bg-whites md:w-[28rem]'>
+							<div className='p-6'>
+								<div className='flex items-center justify-between'>
+									<div className='text-3xl text-main'>Bilet Seç</div>
+									<Close onClick={onClose} className='w-8 h-8 cursor-pointer' />
+								</div>
+								<div className='border-b-4 text-primary w-28 text-center mt-6'>
+									<div>19 Haz Paz</div>
+								</div>
+								<div className='flex items-center justify-between mt-6'>
+									<div className='flex items-end justify-between w-[80%] border'>
+										<div className='ml-2'>
+											<div className='font-bold'>1st Phase</div>
+											<div className='font-light'>150,00 TRY</div>
+										</div>
+										<div className='mr-2 text-primary font-bold'>Bilgi</div>
+									</div>
+									<div className='w-[20%] border p-3 text-center'>
+										<div>KAPALI</div>
+									</div>
+								</div>
+								<div className='flex items-center justify-between mt-6'>
+									<div className='flex items-end justify-between w-[80%] border'>
+										<div className='ml-2'>
+											<div className='font-bold'>1st Phase</div>
+											<div className='font-light'>150,00 TRY</div>
+										</div>
+										<div className='mr-2 text-primary font-bold'>Bilgi</div>
+									</div>
+									<div className='w-[20%] border p-3 text-center'>
+										<select className='w-full outline-none bg-whites border-none text-center'>
+											<option defaultChecked disabled>
+												Adet Seçiniz
+											</option>
+											<option>1</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div className='border-[0.5px] mt-4 mb-4'></div>
+							<div className='flex items-start justify-between p-6'>
+								<div>
+									<div>0 Bilet</div>
+									<div>Toplam: -</div>
+								</div>
+							</div>
+							<Link to={`/buy/${id}`} className='p-4 bg-primary text-whites'>
+								Seçili Biletleri Al
+							</Link>
+						</div>
+					</>
+				);
+			}
+		});
+	};
 
 	return (
 		<>
+			{isOpen && <ChooseTicket />}
 			<Navbar />
 			<div className='flex items-center justify-center bg-primary h-16 mt-2 select-none'>
 				<div className='ml-2 text-whites text-3xl font-semibold'>Zamanı Üretken Kullanmak</div>
@@ -19,7 +84,7 @@ const CardDetail = () => {
 				<div className='grid md:grid-cols-2 gap-10 mt-4'>
 					<img className='select-none w-[28rem]' src='https://picsum.photos/400/300' alt='' />
 					<div className='flex items-start justify-between flex-col'>
-						<div className='space-y-4 '>
+						<div className='space-y-4'>
 							{[1, 2, 3].map(() => (
 								<div className='flex select-none'>
 									<div className='text-main bg-whites p-3 w-[18rem]'>Normal Bilet</div>
@@ -27,11 +92,16 @@ const CardDetail = () => {
 								</div>
 							))}
 						</div>
-						<div className='text-center bg-primary text-whites w-[24rem] py-4'>Paylaş</div>
+						<div>
+							<div onClick={handleOpen} className='text-center bg-main text-whites w-[24rem] py-4 mb-2 mt-4 mb:mt-0 cursor-pointer block'>
+								Bileti Al
+							</div>
+							<div className='text-center bg-primary text-whites w-[24rem] py-4'>Paylaş</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div className='flex items-center justify-center mt-12'>
+			<div className='flex items-center justify-center mt-8'>
 				<div className='grid md:grid-cols-2 gap-10'>
 					<div className='flex items-start flex-col justify-start w-[28rem] space-y-4 mb-10'>
 						<div className='text-main text-left'>
@@ -42,7 +112,7 @@ const CardDetail = () => {
 						</div>
 					</div>
 					<div className='flex items-start flex-col w-[24rem]'>
-						<div className='p-4 bg-main  '>
+						<div className='p-4 bg-main'>
 							<div className='font-bold text-whites'>Başlangıç Tarihi</div>
 							<div className='font-light text-whites opacity-85'>03 Haziran 2022 Cuma 21:00</div>
 							<div className='font-bold mt-2 text-whites'>Bitiş Tarihi</div>
