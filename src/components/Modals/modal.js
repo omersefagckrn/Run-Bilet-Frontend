@@ -2,15 +2,12 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { confirmAlert } from 'react-confirm-alert';
 import { usersAction } from '../../actions';
-import React from 'react';
-
-// import { Mail, Password } from '../../assets';
+import Stories from 'react-insta-stories';
 
 const loginSchema = Yup.object({
 	email: Yup.string().email().required('Lütfen e-mail adresinizi girin.'),
 	password: Yup.string().required('Lütfen şifrenizi girin.')
 });
-
 
 const LoginModal = ({ dispatch }) => {
 	confirmAlert({
@@ -50,4 +47,39 @@ const LoginModal = ({ dispatch }) => {
 	});
 };
 
-export { LoginModal };
+const StoryModal = () => {
+	const stories = [
+		{
+			content: () => <img src={'https://picsum.photos/id/12/1920/1080'} alt='' />
+		},
+		{
+			content: () => <img src={'https://picsum.photos/id/13/1920/1080'} alt='' />
+		},
+		{
+			content: () => <img src={'https://picsum.photos/id/14/1920/1080'} alt='' />
+		},
+		{
+			content: () => <img src={'https://picsum.photos/id/15/1920/1080'} alt='' />
+		},
+		{
+			content: () => <img src={'https://picsum.photos/id/11/1920/1080'} alt='' />
+		}
+	];
+	confirmAlert({
+		customUI: ({ onClose }) => {
+			return (
+				<Stories
+					onAllStoriesEnd={() => {
+						onClose();
+					}}
+					width={'40rem'}
+					height={'40rem'}
+					keyboardNavigation={true}
+					stories={stories}
+				/>
+			);
+		}
+	});
+};
+
+export { LoginModal, StoryModal };

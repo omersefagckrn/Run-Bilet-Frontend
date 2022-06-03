@@ -1,5 +1,5 @@
 // store for redux
-import { combineReducers, applyMiddleware, createStore } from 'redux';
+import { combineReducers, applyMiddleware, legacy_createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { eventReducers, usersReducers, organisatorsReducers } from '../reducers';
@@ -34,6 +34,6 @@ export const rootReducer = combineReducers({
 	})
 });
 const middlewares = applyMiddleware(thunk, logger);
-const store = createStore(rootReducer, middlewares);
+const store = legacy_createStore(rootReducer, middlewares);
 
 export { store };

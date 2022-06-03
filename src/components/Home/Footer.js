@@ -27,9 +27,9 @@ const Footer = () => {
 	return (
 		<>
 			<div className='flex flex-col items-center justify-center text-whites bg-main mt-6'>
-				<div className='grid sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 mt-6'>
+				<div className='grid sm:grid-cols-2 md:grid-cols-6 gap-2 mt-6'>
 					{[1, 2, 3, 4, 5, 6].map((_i, i) => (
-						<div key={i} className='space-y-2 mb-6'>
+						<div key={i} className='space-y-2 mb-6 ml-2'>
 							<div className='text-3xl text-whites font-medium select-none'>Bilgi Kaynakları</div>
 							{data.map((item, index) => {
 								return (
