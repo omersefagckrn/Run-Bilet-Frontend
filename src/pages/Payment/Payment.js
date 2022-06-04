@@ -27,7 +27,7 @@ const data = [
 ];
 
 const Payment = () => {
-	const [pageStep, setPageStep] = React.useState(1);
+	const [pageStep, setPageStep] = React.useState(2);
 	const [currentDropdown, setShowDropdown] = React.useState(null);
 	return (
 		<>
@@ -88,18 +88,26 @@ const Payment = () => {
 						}}>
 						{({ handleSubmit, handleChange, values, errors }) => (
 							<form className='text-center w-[22rem]' onSubmit={handleSubmit}>
-								<div className='flex flex-col items-center justify-center space-y-2 mt-2'>
+								<div className='flex flex-col space-y-2 mt-2'>
+									<label className='text-main text-left'>Kart Numarası</label>
 									<input pattern='[0-9]+' id='cardNumber' value={values.cardNumber} onChange={handleChange} type='text' placeholder='**** **** **** 7777' className='placeholder:text-main focus:text-center placeholder:text-center bg-whites p-3 w-full' />
 									<div className='text-green mt-2'>{errors.cardNumber}</div>
 								</div>
-								<div className='flex items-start mt-2 space-x-1'>
-									<input pattern='[0-9]+' maxLength={2} id='cardMonth' value={values.cardMonth} onChange={handleChange} type='text' placeholder='Ay' className='placeholder:text-main w-1/3 placeholder:text-center bg-whites p-3' />
-									<input pattern='[0-9]+' maxLength={2} id='cardYear' value={values.cardYear} onChange={handleChange} type='text' placeholder='Yıl' className='placeholder:text-main w-1/3 placeholder:text-center bg-whites p-3' />
-									<input pattern='[0-9]+' maxLength={3} id='cardCvc' value={values.cardCvc} onChange={handleChange} type='text' placeholder='CVC' className='placeholder:text-main w-1/3 placeholder:text-center bg-whites p-3' />
+								<div className='flex flex-col items-start mt-2'>
+									<div className='space-x-24'>
+										<label className='text-main text-left'>Ay</label>
+										<label className='text-main text-left'>Yıl</label>
+										<label className='text-main text-left'>CVC</label>
+									</div>
+									<div className='flex space-x-1'>
+										<input pattern='[0-9]+' maxLength={2} id='cardMonth' value={values.cardMonth} onChange={handleChange} type='text' placeholder='Ay' className='placeholder:text-main w-1/3 placeholder:text-center bg-whites p-3' />
+										<input pattern='[0-9]+' maxLength={2} id='cardYear' value={values.cardYear} onChange={handleChange} type='text' placeholder='Yıl' className='placeholder:text-main w-1/3 placeholder:text-center bg-whites p-3' />
+										<input pattern='[0-9]+' maxLength={3} id='cardCvc' value={values.cardCvc} onChange={handleChange} type='text' placeholder='CVC' className='placeholder:text-main w-1/3 placeholder:text-center bg-whites p-3' />
+									</div>
 								</div>
 								<div className='text-green mt-2'>{(errors.cardCvc || errors.cardMonth || errors.cardYear) && 'Kart Ek Bilgileri Gereklidir!'}</div>
 								<div className='flex flex-col items-center justify-center space-y-2 mt-2'>
-									<div className='text-main'>Varsa Etkinlik kodunuzu girin</div>
+									<div className='text-main text-left'>Varsa Etkinlik kodunuzu girin</div>
 									<input id='ticketCode' value={values.ticketCode} onChange={handleChange} type='text' placeholder='Etkinlik Kodu' className='focus:text-center placeholder:text-main placeholder:text-center bg-whites p-3 w-full' />
 								</div>
 								<div className='flex flex-col font-light text-main items-center m-2 mt-4 select-none'>
