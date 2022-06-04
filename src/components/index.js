@@ -3,6 +3,6 @@ import { Navbar } from './Navbar';
 import { Banner, Filter, Activities, CreateActivity, Footer, Story } from './Home';
 import { Cards, Card } from './Cards';
 import { CardDetail, LoginCardDetail } from './CardDetail';
-import * as Modal from './Modals';
+import { Modals } from './Modals';
 
-export { Panel, Modal, Sidebar, LoginCardDetail, Navbar, Banner, Filter, Activities, Cards, CreateActivity, CardDetail, Card, MenuRoute, MobileMenuRoute, Footer, Story };
+export { Panel, Sidebar, LoginCardDetail, Navbar, Banner, Filter, Activities, Cards, CreateActivity, CardDetail, Card, MenuRoute, MobileMenuRoute, Footer, Story, Modals };

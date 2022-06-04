@@ -11,7 +11,6 @@ const Home = () => {
 			<Story />
 			<Activities />
 			<CreateActivity />
-
 			<Activities />
 			<Footer />
 		</>

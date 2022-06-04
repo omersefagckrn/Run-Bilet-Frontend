@@ -26,5 +26,6 @@ import { ReactComponent as Qr } from './qr.svg';
 import { ReactComponent as Password } from './password.svg';
 import { ReactComponent as Mail } from './mail.svg';
 import { ReactComponent as Close } from './close.svg';
+import { ReactComponent as AddPerson } from './addPerson.svg';
 
-export { RunTicket, Password, Mail, Selection, Qr, Share, TicketWhite, Profile, Swipers, Avatar, Logo, Dropdown, QrCode, ActiveActivity, ActiveHome, ActiveTicket, Search, TicketOffice, Ticket, Notification, Activity, Organization, Help, Home, Account, Locations, FinancialDetails, Close };
+export { RunTicket, Password, Mail, AddPerson, Selection, Qr, Share, TicketWhite, Profile, Swipers, Avatar, Logo, Dropdown, QrCode, ActiveActivity, ActiveHome, ActiveTicket, Search, TicketOffice, Ticket, Notification, Activity, Organization, Help, Home, Account, Locations, FinancialDetails, Close };

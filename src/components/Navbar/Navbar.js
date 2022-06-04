@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Home, RunTicket, Profile, Ticket, Activity, ActiveActivity, ActiveHome, ActiveTicket, Search } from '../../assets';
-import { Modal } from '..';
+import { Modals } from '..';
 
 const Navbar = ({ Tab }) => {
 	const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const Navbar = ({ Tab }) => {
 										<Link to={Route.route} className={`${Route.name === 'Kayıt Ol / Giriş Yap' ? 'text-green' : 'text-main'} hover:text-whites hover:bg-main bg-white flex px-4 py-2`}>
 											<div
 												onClick={() => {
-													if (Route.name === 'Kayıt Ol / Giriş Yap') Modal.LoginModal({ dispatch });
+													if (Route.name === 'Kayıt Ol / Giriş Yap') Modals.LoginModal({ dispatch });
 												}}>
 												{Route.name}
 											</div>

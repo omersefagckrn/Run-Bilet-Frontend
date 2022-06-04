@@ -1,3 +1,3 @@
-import { LoginModal, StoryModal } from './modal';
+import * as Modals from './modal';
 
-export { LoginModal, StoryModal };
+export { Modals };
