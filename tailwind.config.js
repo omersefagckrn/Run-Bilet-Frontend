@@ -8,10 +8,10 @@ module.exports = {
 				title: '#241f1f',
 				whites: '#fafafa',
 				green: '#0b5c22',
-				black: '#241f1f'
+				black: '#241f1f',
+				red: '#ff0000'
 			}
-		},
-
+		}
 	},
 	plugins: [require('tailwind-scrollbar')]
 };
