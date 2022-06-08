@@ -1,23 +1,12 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
+import { useLocation } from "react-router-dom";
+import { stepTwoSchema, stepThreeSchema } from '../../validations/payment';
+import { Navbar, Footer } from '../../components';
 
-import * as Yup from 'yup';
 import { Formik } from 'formik';
 
 import { AddPerson, Dropdown, Selection } from '../../assets';
 
-const stepTwoSchema = Yup.object({
-	cardNumber: Yup.string().required('Kart Numarası Gereklidir!'),
-	cardMonth: Yup.string().required(),
-	cardYear: Yup.string().required(),
-	cardCvc: Yup.string().required(),
-	ticketCode: Yup.string()
-});
-
-const stepThreeSchema = Yup.object({
-	name: Yup.string().required('İsim gereklidir!'),
-	surname: Yup.string().required('Soyisim gereklidir!'),
-	phone: Yup.number().required('Telefon Numarası gereklidir!')
-});
 
 const data = [
 	{ id: 1, title: 'Harun Lale', description: 'Bilet uygulamasına kayıt olmak ücretli mi ?' },
@@ -26,54 +15,94 @@ const data = [
 	{ id: 4, title: 'Ece Binnaz Yurtsever', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys' }
 ];
 
+const useQuery = () => {
+	const { search } = useLocation();
+	return useMemo(() => new URLSearchParams(search), [search]);
+};
+
 const Payment = () => {
-	const [pageStep, setPageStep] = React.useState(2);
-	const [currentDropdown, setShowDropdown] = React.useState(null);
+	let query = useQuery();
+	const [pageStep, setPageStep] = useState(1);
+	const [currentDropdown, setShowDropdown] = useState(null);
 	return (
 		<>
-			<div className='text-main text-3xl font-bold text-center mt-6 select-none'>
-				{pageStep === 1 && (
-					<>
-						Bilet Seçimi
-						<div className='text-xl font-light'>Biletleri alacağınız kişileri ve bilet tipini seçin</div>
-					</>
-				)}
-				{pageStep === 2 && (
-					<>
-						Ödeme Bilgileri
-						<div className='text-xl font-light'>Kredi kartı bilgileriniz Payoneer ödeme aracılığıyla yapılamaktadır ve kart bilgileri tutulmaktadır.</div>
-					</>
-				)}
-				{pageStep === 3 && (
-					<>
-						Kişi Bilgileri
-						<div className='text-xl font-light'>Bilet almak istediğiniz kişinin bilgilerini düzenleyin.</div>
-					</>
-				)}
-			</div>
+			<Navbar Tab='Payment' />
+		
 			<div className='flex flex-col items-center justify-center mt-6'>
 				{pageStep === 1 && (
 					<>
-						{data.map((_item, index) => (
-							<div className='mb-2 mt-2' key={index}>
-								<div className='bg-whites flex items-start justify-between p-2 w-[20rem] md:w-[25rem]'>
-									<div className='text-main'>{_item.title}</div>
-									<button className='ml-2'>{currentDropdown !== _item.id ? <Dropdown onClick={() => setShowDropdown(_item.id)} /> : <Dropdown className='rotate-180' onClick={() => setShowDropdown(null)} />}</button>
+						<div className="w-[1144px]">
+							<div className='flex justify-between items-center bg-main bg-opacity-5'>
+								<div className='space-y-4 ml-4'>
+									<h2 className='font-semibold text-2xl' >Zamanı Üretken Kullanma</h2>
+									<p className='text-lg font-light'>5 Ağustos 2022 - Cuma</p>
+									<p className=' font-light'>Istanbul</p>
 								</div>
-								{currentDropdown === _item.id && (
-									<div className='text-whites font-normal p-2 w-[20rem] md:w-[25rem] bg-green flex items-center justify-start'>
-										<Selection className='w-6 h-6 mr-2' />
-										<div>
-											<div>Selin Kısaayak</div>
-											<div>1st Class - Önceden Girişli 277tl</div>
-										</div>
-									</div>
-								)}
+								<div>
+									<img src={"https://picsum.photos/400/250"} alt="" />
+								</div>
 							</div>
-						))}
-						<div className='flex items-center justify-center text-main cursor-pointer select-none'>
-							<AddPerson className='w-6 h-6 mr-2' /> Yeni Kişi Ekle
-						</div>
+							<div className='mt-4 bg-main bg-opacity-5 p-4'>
+								<div className='rounded bg-green bg-opacity-60 flex justify-between items-center h-16 p-4 mb-4'>
+									<p className='text-lg text-green'>Seçtiğiniz biletleri sizin için ayırdık. Lütfen size ayrılan bu sürede işlemleri tamamlayın.</p>
+									<div className='rounded py-3 px-6 border-2 border-red-700 cursor-pointer'><p className='text-red-700'>Vazgeç</p></div>
+								</div>
+								<h2 className='font-semibold text-lg '>Katılımcı Bilgilerini Girin</h2>
+							<div className='flex justify-between'>
+								<div>
+								{data.map((_item, index) => (
+									<div className='mb-2 mt-2' key={index}>
+										<div className='bg-whites flex items-start justify-between p-2 w-[20rem] md:w-[25rem]'>
+											<div className='text-main'>{_item.title}</div>
+											<button className='ml-2'>{currentDropdown !== _item.id ? <Dropdown onClick={() => setShowDropdown(_item.id)} /> : <Dropdown className='rotate-180' onClick={() => setShowDropdown(null)} />}</button>
+										</div>
+										{currentDropdown === _item.id && (
+											<div className='text-whites font-normal p-2 w-[20rem] md:w-[25rem] bg-green flex items-center justify-start'>
+												<Selection className='w-6 h-6 mr-2' />
+												<div>
+													<div>Selin Kısaayak</div>
+													<div>1st Class - Önceden Girişli 277tl</div>
+												</div>
+											</div>
+										)}
+									</div>
+								))}
+								</div>
+								<div className='w-[20rem] space-y-4'>
+											<div>
+												<h2 className='font-semibold'>Başlangıç Tarihi</h2>
+												<p className='font-light'>05 Ağustos 2022 Cuma 12:00</p>
+											</div>
+											<div>
+												<h2 className='font-semibold'>Bitiş Tarihi</h2>
+												<p className='font-light'>07 Ağustos 2022 Pazar 23:55</p>
+												<div className='opacity-10 bg-main w-full h-1 mt-2'></div>
+											</div>
+											<div>
+												<h2 className='font-semibold'>Konum</h2>
+												<p className='font-light'>Uludağ, Kirazlı Mh. Uludağ Oteller Bölgesi Osmangazi/BURSA, Osmangazi, Bursa</p>
+											</div>
+								</div>
+								</div>
+								<div className='flex items-center text-whites bg-primary w-[25rem] py-3 px-2 cursor-pointer select-none'>
+									<AddPerson className='w-6 h-6 mr-2 color-whites' /> Yeni Kişi Ekle
+								</div>
+								<div className='mt-20'>
+								
+								<h2 className='font-semibold text-lg '>Fatura Bilgileri</h2>
+								<div className='flex gap-y-4 flex-col w-[20rem] md:w-[25rem] p-2'>
+									<select className='p-2' name="" id="">
+										<option value="">Bireysel</option>
+										<option value="">Tüzel</option>
+									</select>
+									<input className='p-2 focus:outline-none' type="text" value='İsim Soyisim' id="" />
+									<input className='p-2 focus:outline-none' type="text" value='Adres' id="" />
+								</div>
+								</div>
+								<button className='bg-primary text-whites px-6 py-3 mt-4'>Ödeme Adımına Geç</button>
+								</div>
+								</div>
+						
 					</>
 				)}
 				{pageStep === 2 && (
@@ -153,6 +182,7 @@ const Payment = () => {
 					</Formik>
 				)}
 			</div>
+			<Footer />
 		</>
 	);
 };
