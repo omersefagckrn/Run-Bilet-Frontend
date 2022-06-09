@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Home, RunTicket, Profile, Ticket, Activity, ActiveActivity, ActiveHome, ActiveTicket, Search } from '../../assets';
 import { Modals } from '..';
 
 const Navbar = ({ Tab }) => {
 	const dispatch = useDispatch();
-	const selector = useSelector((state) => state);
+
 	const routeMatch = [
 		{
 			route: '/',

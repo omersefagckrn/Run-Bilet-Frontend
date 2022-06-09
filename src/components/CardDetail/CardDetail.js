@@ -1,19 +1,68 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import { Navbar } from '../';
 import { Selection } from '../../assets';
 import { Footer } from '../Home';
-import { Modals } from '../Modals';
+import { Close } from '../../assets';
+import { Link } from 'react-router-dom';
 
 const CardDetail = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const handleOpen = () => setIsOpen((prev) => !prev);
-	const { id } = useParams();
 
 	return (
 		<>
 			<Navbar />
-			{isOpen && <Modals.ChooseTicket href={`cards/${id}/buy`} />}
+			{isOpen && <div className='bg-main w-full h-screen flex justify-center items-center bg-opacity-60 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 '>
+				<div className='bg-whites md:w-[28rem]'>
+					<div className='p-6'>
+						<div className='flex items-center justify-between'>
+							<div className='text-3xl text-main'>Bilet Seç</div>
+							<Close onClick={handleOpen} className='w-8 h-8 cursor-pointer' />
+						</div>
+						<div className='border-b-4 text-primary w-28 text-center mt-6'>
+							<div>19 Haz Paz</div>
+						</div>
+						<div className='flex items-center justify-between mt-6'>
+							<div className='flex items-end justify-between w-[80%] border'>
+								<div className='ml-2'>
+									<div className='font-bold'>1st Phase</div>
+									<div className='font-light'>150,00 TRY</div>
+								</div>
+								<div className='mr-2 text-primary font-bold'>Bilgi</div>
+							</div>
+							<div className='w-[20%] border p-3 text-center'>
+								<div>KAPALI</div>
+							</div>
+						</div>
+						<div className='flex items-center justify-between mt-6'>
+							<div className='flex items-end justify-between w-[80%] border'>
+								<div className='ml-2'>
+									<div className='font-bold'>1st Phase</div>
+									<div className='font-light'>150,00 TRY</div>
+								</div>
+								<div className='mr-2 text-primary font-bold'>Bilgi</div>
+							</div>
+							<div className='w-[20%] border p-3 text-center'>
+								<select className='w-full outline-none bg-whites border-none text-center'>
+									<option defaultChecked disabled>
+										Adet Seçiniz
+									</option>
+									<option>1</option>
+									<option>2</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div className='border-[0.5px] mt-4 mb-4'></div>
+					<div className='flex items-start justify-between p-6'>
+						<div>
+							<div>0 Bilet</div>
+							<div>Toplam: -</div>
+						</div>
+						<div className='p-4 bg-primary text-whites'><Link to="/payment">Seçili Biletleri Al</Link></div>
+					</div>
+				</div>
+			</div>}
 			<div className='flex items-center justify-center bg-primary h-16 mt-2 select-none'>
 				<div className='ml-2 text-whites text-3xl font-semibold'>Zamanı Üretken Kullanmak</div>
 			</div>

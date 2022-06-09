@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#zso6wsl40a)">
+        <path d="M0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12z" fill="#00BCE6" fill-opacity=".1"/>
+        <path d="M12 4c5.514 0 10 3.592 10 8.007 0 4.917-5.145 7.961-9.91 7.961-1.937 0-3.383-.397-4.394-.644-1 .613-1.595 1.037-4.272 1.82.535-1.373.723-2.748.602-4.265-.838-1-2.025-2.4-2.025-4.872C2 7.592 6.486 4 12 4zm0-2C5.662 2 0 6.226 0 12.007c0 2.05.738 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 1.418.345 2.775.503 4.059.503 7.084 0 11.91-4.837 11.91-9.961C24 6.195 18.299 2 12 2zm1.024 13.975a1.024 1.024 0 1 1-2.049.001 1.024 1.024 0 0 1 2.049-.001zm1.141-8.192C13.667 7.278 12.924 7 12.075 7c-1.786 0-2.941 1.271-2.941 3.237h1.647c0-1.217.68-1.649 1.261-1.649.519 0 1.07.345 1.117 1.004.052.694-.319 1.046-.788 1.493-1.157 1.1-1.179 1.633-1.173 2.842h1.643c-.01-.544.025-.986.766-1.785.555-.598 1.245-1.342 1.259-2.477.008-.758-.233-1.409-.701-1.882z" fill="#53525E"/>
+    </g>
+    <defs>
+        <filter id="zso6wsl40a" x="-4" y="-4" width="32.001" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feGaussianBlur in="BackgroundImage" stdDeviation="2"/>
+            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_7_3778"/>
+            <feBlend in="SourceGraphic" in2="effect1_backgroundBlur_7_3778" result="shape"/>
+        </filter>
+    </defs>
+</svg>

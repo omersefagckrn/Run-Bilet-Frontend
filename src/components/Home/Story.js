@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modals, StoryModal } from '../Modals';
+import { Modals } from '../Modals';
 
 const Story = () => {
 	const [isOpen, setIsOpen] = React.useState(false);

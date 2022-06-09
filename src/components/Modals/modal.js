@@ -4,7 +4,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import { usersAction } from '../../actions';
 import Stories from 'react-insta-stories';
 import { Close } from '../../assets';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const loginSchema = Yup.object({
 	email: Yup.string().email().required('Lütfen e-mail adresinizi girin.'),
@@ -135,7 +135,7 @@ const ChooseTicket = ({ href }) => {
 								<div>0 Bilet</div>
 								<div>Toplam: -</div>
 							</div>
-							<div className='p-4 bg-primary text-whites'>Seçili Biletleri Al</div>
+							<div className='p-4 bg-primary text-whites'><NavLink to="/payment">Seçili Biletleri Al</NavLink></div>
 						</div>
 					</div>
 				</>
