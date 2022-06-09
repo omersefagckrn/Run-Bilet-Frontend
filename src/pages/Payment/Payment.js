@@ -22,7 +22,7 @@ const useQuery = () => {
 
 const Payment = () => {
 	let query = useQuery();
-	const [pageStep, setPageStep] = useState(2);
+	const [pageStep, setPageStep] = useState(1);
 	const [currentDropdown, setShowDropdown] = useState(null);
 	const [cardState, setCardState] = useState({
 		cardOwner: '***** *******',
@@ -36,7 +36,7 @@ const Payment = () => {
 			<div className='flex flex-col items-center justify-center mt-6'>
 				{pageStep === 1 && (
 					<div className='w-[1144px]'>
-						<div className='flex justify-between items-center bg-main bg-opacity-5'>
+						<div className='flex justify-between items-center bg-gray-50'>
 							<div className='space-y-4 ml-4'>
 								<h2 className='font-semibold text-2xl'>Zamanı Üretken Kullanma</h2>
 								<p className='text-lg font-light'>5 Ağustos 2022 - Cuma</p>
@@ -46,11 +46,11 @@ const Payment = () => {
 								<img src={'https://picsum.photos/400/250'} alt='' />
 							</div>
 						</div>
-						<div className='mt-4 bg-main bg-opacity-5 p-4'>
-							<div className='rounded bg-green bg-opacity-60 flex justify-between items-center h-16 p-4 mb-4'>
+						<div className='mt-4 bg-gray-50 p-4'>
+							<div className='rounded bg-lime-200 flex justify-between items-center h-16 p-4 mb-4'>
 								<p className='text-lg text-green'>Seçtiğiniz biletleri sizin için ayırdık. Lütfen size ayrılan bu sürede işlemleri tamamlayın.</p>
-								<div className='rounded py-3 px-6 border-2 border-red-700 cursor-pointer'>
-									<p className='text-red-700'>Vazgeç</p>
+								<div className='rounded py-3 px-6 border-2 border-red cursor-pointer'>
+									<p className='text-red'>Vazgeç</p>
 								</div>
 							</div>
 							<h2 className='font-semibold text-lg '>Katılımcı Bilgilerini Girin</h2>
@@ -95,16 +95,23 @@ const Payment = () => {
 							</div>
 							<div className='mt-20'>
 								<h2 className='font-semibold text-lg '>Fatura Bilgileri</h2>
-								<div className='flex gap-y-4 flex-col w-[20rem] md:w-[25rem] p-2'>
-									<select className='p-2' name='' id=''>
+								<div className='flex gap-y-6 flex-col w-[20rem] md:w-[25rem] p-2'>
+									<select className='p-2 border border-gray-300' name='' id=''>
 										<option value=''>Bireysel</option>
 										<option value=''>Tüzel</option>
 									</select>
-									<input className='p-2 focus:outline-none' type='text' value='İsim Soyisim' id='' />
-									<input className='p-2 focus:outline-none' type='text' value='Adres' id='' />
+									<div className='relative'>
+									<input name='name' className='peer placeholder-transparent h-10 w-full p-2 border border-gray-300 focus:outline-none' type='text' placeholder='İsim Soyisim' id='' />
+									<label className='absolute transition-all left-1 px-1 -top-3.5 text-sm bg-gray-50 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:bg-white peer-focus:-top-3.5 peer-focus:bg-gray-50 peer-focus:text-base' htmlFor="name">İsim Soyisim</label>
+									</div>
+									<div className='relative'>
+									<input name='adres' className='peer placeholder-transparent h-10 w-full p-2 border border-gray-300 focus:outline-none' type='text' placeholder='Adres' id='' />
+									<label className='absolute transition-all left-1 px-1 -top-3.5 text-sm bg-gray-50 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:bg-white peer-focus:-top-3.5 peer-focus:bg-gray-50 peer-focus:text-base' htmlFor="adres">Adres</label>
+									</div>
 								</div>
 							</div>
-							<button className='bg-primary text-whites px-6 py-3 mt-4'>Ödeme Adımına Geç</button>
+							<button onClick={()=>{ setPageStep(2) }} className='bg-primary text-whites px-6 py-3 mt-4'>Ödeme Adımına Geç</button>
+							<p className='mt-4 text-sm'>* Devam etmeyi seçerek <span className='text-primary'>kullanıcı ve mesafeli satış sözleşmesini</span> onaylıyorum.</p>
 						</div>
 					</div>
 				)}
