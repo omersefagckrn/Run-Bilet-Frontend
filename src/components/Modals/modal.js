@@ -6,9 +6,16 @@ import Stories from 'react-insta-stories';
 import { Close } from '../../assets';
 import { NavLink } from 'react-router-dom';
 
+
 const loginSchema = Yup.object({
 	email: Yup.string().email().required('Lütfen e-mail adresinizi girin.'),
 	password: Yup.string().required('Lütfen şifrenizi girin.')
+});
+
+export const AddUserSchema = Yup.object({
+	name: Yup.string().required('İsim gereklidir!'),
+	surname: Yup.string().required('Soyisim gereklidir!'),
+	phone: Yup.number().required('Telefon Numarası gereklidir!')
 });
 
 const LoginModal = ({ dispatch }) => {
@@ -144,4 +151,49 @@ const ChooseTicket = ({ href }) => {
 	});
 };
 
-export { LoginModal, StoryModal, ChooseTicket };
+const AddUser = () => {
+	confirmAlert({
+		customUI: ({ onClose }) => {
+			return (
+				<>
+					<div className='bg-whites md:w-[28rem]'>
+						<Formik
+							validateOnBlur={false}
+							validateOnChange={false}
+							initialValues={{ name: '', surname: '', phone: '' }}
+							validationSchema={AddUserSchema}
+							onSubmit={(values) => {
+								console.log(values);
+							}}>
+							{({ handleSubmit, handleChange, values, errors }) => (
+								<form onSubmit={handleSubmit}>
+									<div className='flex flex-col p-4 space-y-2 mt-2'>
+									<div className='flex items-center justify-between'>
+										<div className='font-medium text-lg'>Kişi Bilgilerini Güncelle</div>
+										<Close onClick={onClose} className='w-8 h-8 cursor-pointer' />
+									</div>
+										
+										<input id='name' value={values.name} onChange={handleChange} type='text' placeholder='Ad' className='placeholder:text-main focus:outline-none border border-gray-400 bg-whites p-3 w-full' />
+										<div className='text-red'>{errors.name}</div>
+										<input id='surname' value={values.surname} onChange={handleChange} type='text' placeholder='Soyad' className='placeholder:text-main focus:outline-none border border-gray-400 bg-whites p-3 w-full' />
+										<div className='text-red'>{errors.surname}</div>
+										<input pattern='[0-9]+' maxLength={11} id='phone' value={values.phone} onChange={handleChange} type='text' placeholder='Telefon' className='placeholder:text-main border border-gray-400 focus:outline-none bg-whites p-3 w-full' />
+										<div className='text-red'>{errors.phone}</div>
+									</div>
+									<div className='flex items-center m-2 select-none'>
+										<button className='text-whites bg-gray-500 hover:bg-gray-600 transition-all duration-300 p-3 w-1/2'>Kişiyi Kaldır</button>
+										<button type='submit' className='w-1/2 bg-primary bg-opacity-80 transition-all duration-300 hover:bg-opacity-100 text-center text-whites p-3 ml-2'>
+											Kişi Bilgilerini Güncelle
+										</button>
+									</div>
+								</form>
+							)}
+						</Formik>
+					</div>
+				</>
+			);
+		}
+	});
+};
+
+export { LoginModal, StoryModal, ChooseTicket, AddUser };

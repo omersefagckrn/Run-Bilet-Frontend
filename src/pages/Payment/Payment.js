@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { stepTwoSchema, stepThreeSchema } from '../../validations/payment';
-import { Navbar, Footer } from '../../components';
+import { Navbar, Footer, Modals } from '../../components';
 import { FcSimCardChip } from 'react-icons/fc';
 
 import { Formik } from 'formik';
@@ -27,6 +27,10 @@ const Payment = () => {
 		cardMonth: '**',
 		cardYear: '***'
 	});
+
+	const AddUser = () => {
+		Modals.AddUser();
+	}
 	return (
 		<>
 			<Navbar Tab='Payment' />
@@ -87,7 +91,7 @@ const Payment = () => {
 									</div>
 								</div>
 							</div>
-							<div className='flex items-center text-whites bg-primary w-[25rem] py-3 px-2 cursor-pointer select-none'>
+							<div onClick={AddUser} className='flex items-center text-whites bg-primary w-[25rem] py-3 px-2 cursor-pointer select-none'>
 								<AddPerson className='w-6 h-6 mr-2 color-whites' /> Yeni Kişi Ekle
 							</div>
 							<div className='mt-20'>
@@ -125,12 +129,13 @@ const Payment = () => {
 							</div>
 						</div>
 						<div className='mt-4 bg-gray-50 p-4'>
-							<div className='rounded bg-lime-200 flex justify-between items-center h-16 p-4 mb-4'>
+							<div className='rounded bg-lime-200 flex justify-around items-center h-16 p-4 mb-4'>
 								<p className='text-lg text-green'>Seçtiğiniz biletleri sizin için ayırdık. Lütfen size ayrılan bu sürede işlemleri tamamlayın.</p>
 								<div className='rounded py-3 px-6 border-2 border-red cursor-pointer'>
 									<p className='text-red'>Vazgeç</p>
 								</div>
 							</div>
+							<div>anan</div>
 							<div className='flex justify-between'>
 								<div>
 									<div className='flex justify-between w-[35rem]'>
@@ -208,7 +213,7 @@ const Payment = () => {
 														initialValues={{ cardOwner: '', cardNumber: '', cardMonth: '', cardYear: '', cardCvc: '', ticketCode: '' }}
 														validationSchema={stepTwoSchema}
 														onSubmit={(values) => {
-															console.log(values);
+															{/*console.log(values);*/ }
 															setCardState({
 																cardOwner: values.cardOwner,
 																cardNumber: values.cardNumber,
@@ -276,33 +281,7 @@ const Payment = () => {
 					</div>
 				)}
 				{pageStep === 3 && (
-					<Formik
-						validateOnBlur={false}
-						validateOnChange={false}
-						initialValues={{ name: '', surname: '', phone: '' }}
-						validationSchema={stepThreeSchema}
-						onSubmit={(values) => {
-							console.log(values);
-						}}>
-						{({ handleSubmit, handleChange, values, errors }) => (
-							<form onSubmit={handleSubmit}>
-								<div className='flex flex-col items-start space-y-2 mt-2'>
-									<input id='name' value={values.name} onChange={handleChange} type='text' placeholder='Name' className='placeholder:text-main bg-whites p-3 w-full' />
-									<div className='text-green'>{errors.name}</div>
-									<input id='surname' value={values.surname} onChange={handleChange} type='text' placeholder='Surname' className='placeholder:text-main bg-whites p-3 w-full' />
-									<div className='text-green'>{errors.surname}</div>
-									<input pattern='[0-9]+' maxLength={11} id='phone' value={values.phone} onChange={handleChange} type='text' placeholder='Phone' className='placeholder:text-main bg-whites p-3 w-full' />
-									<div className='text-green'>{errors.phone}</div>
-								</div>
-								<div className='flex items-center m-2 select-none'>
-									<button className='text-main w-1/2'>Kişiyi Kaldır</button>
-									<button type='submit' className='w-1/2 bg-primary text-center text-whites p-3 ml-2'>
-										Kişi Bilgilerini Güncelle
-									</button>
-								</div>
-							</form>
-						)}
-					</Formik>
+					<div>Ödeme başarılıdır.</div>
 				)}
 			</div>
 			<Footer />

@@ -12,7 +12,7 @@ const CardDetail = () => {
 	return (
 		<>
 			<Navbar />
-			{isOpen && <div className='bg-main w-full h-screen flex justify-center items-center bg-opacity-60 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 '>
+			{isOpen && <div className='bg-main w-full h-screen flex justify-center items-center bg-opacity-60 fixed  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 '>
 				<div className='bg-whites md:w-[28rem]'>
 					<div className='p-6'>
 						<div className='flex items-center justify-between'>

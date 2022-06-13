@@ -9,8 +9,4 @@ export const stepTwoSchema = Yup.object({
 	ticketCode: Yup.string()
 });
 
-export const stepThreeSchema = Yup.object({
-	name: Yup.string().required('İsim gereklidir!'),
-	surname: Yup.string().required('Soyisim gereklidir!'),
-	phone: Yup.number().required('Telefon Numarası gereklidir!')
-});
+
