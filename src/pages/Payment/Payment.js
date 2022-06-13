@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
-import { stepTwoSchema, stepThreeSchema } from '../../validations/payment';
+import { stepTwoSchema } from '../../validations/payment';
 import { Navbar, Footer, Modals } from '../../components';
 import { FcSimCardChip } from 'react-icons/fc';
 
 import { Formik } from 'formik';
 
 import { AddPerson, Dropdown, Selection } from '../../assets';
+import Count from '../../components/Count/Count';
+import { useParams } from 'react-router-dom';
 
 const data = [
 	{ id: 1, title: 'Harun Lale', description: 'Bilet uygulamasına kayıt olmak ücretli mi ?' },
@@ -15,10 +17,7 @@ const data = [
 	{ id: 4, title: 'Ece Binnaz Yurtsever', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys' }
 ];
 
-
-
 const Payment = () => {
-
 	const [pageStep, setPageStep] = useState(1);
 	const [currentDropdown, setShowDropdown] = useState(null);
 	const [cardState, setCardState] = useState({
@@ -30,7 +29,9 @@ const Payment = () => {
 
 	const AddUser = () => {
 		Modals.AddUser();
-	}
+	};
+
+	let { id } = useParams();
 	return (
 		<>
 			<Navbar Tab='Payment' />
@@ -49,9 +50,15 @@ const Payment = () => {
 						</div>
 						<div className='mt-4 bg-gray-50 p-4'>
 							<div className='rounded bg-lime-200 flex justify-between items-center h-16 p-4 mb-4'>
-								<p className='text-lg text-green'>Seçtiğiniz biletleri sizin için ayırdık. Lütfen size ayrılan bu sürede işlemleri tamamlayın.</p>
+								<div className='text-lg text-green'>
+									Seçtiğiniz biletleri sizin için ayırdık. Lütfen size ayrılan bu sürede işlemleri tamamlayın.(
+									<div className='inline-block'>
+										<Count id={id} />
+									</div>
+									)
+								</div>
 								<div className='rounded py-3 px-6 border-2 border-red cursor-pointer'>
-									<p className='text-red'>Vazgeç</p>
+									<div className='text-red'>Vazgeç</div>
 								</div>
 							</div>
 							<h2 className='font-semibold text-lg '>Katılımcı Bilgilerini Girin</h2>
@@ -103,16 +110,28 @@ const Payment = () => {
 									</select>
 									<div className='relative'>
 										<input name='name' className='peer placeholder-transparent h-10 w-full p-2 border border-gray-300 focus:outline-none' type='text' placeholder='İsim Soyisim' id='' />
-										<label className='absolute transition-all left-1 px-1 -top-3.5 text-sm bg-gray-50 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:bg-white peer-focus:-top-3.5 peer-focus:bg-gray-50 peer-focus:text-base' htmlFor="name">İsim Soyisim</label>
+										<label className='absolute transition-all left-1 px-1 -top-3.5 text-sm bg-gray-50 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:bg-white peer-focus:-top-3.5 peer-focus:bg-gray-50 peer-focus:text-base' htmlFor='name'>
+											İsim Soyisim
+										</label>
 									</div>
 									<div className='relative'>
 										<input name='adres' className='peer placeholder-transparent h-10 w-full p-2 border border-gray-300 focus:outline-none' type='text' placeholder='Adres' id='' />
-										<label className='absolute transition-all left-1 px-1 -top-3.5 text-sm bg-gray-50 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:bg-white peer-focus:-top-3.5 peer-focus:bg-gray-50 peer-focus:text-base' htmlFor="adres">Adres</label>
+										<label className='absolute transition-all left-1 px-1 -top-3.5 text-sm bg-gray-50 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:bg-white peer-focus:-top-3.5 peer-focus:bg-gray-50 peer-focus:text-base' htmlFor='adres'>
+											Adres
+										</label>
 									</div>
 								</div>
 							</div>
-							<button onClick={() => { setPageStep((prev) => prev + 1) }} className='bg-primary text-whites px-6 py-3 mt-4'>Ödeme Adımına Geç</button>
-							<p className='mt-4 text-sm'>* Devam etmeyi seçerek <span className='text-primary'>kullanıcı ve mesafeli satış sözleşmesini</span> onaylıyorum.</p>
+							<button
+								onClick={() => {
+									setPageStep((prev) => prev + 1);
+								}}
+								className='bg-primary text-whites px-6 py-3 mt-4'>
+								Ödeme Adımına Geç
+							</button>
+							<p className='mt-4 text-sm'>
+								* Devam etmeyi seçerek <span className='text-primary'>kullanıcı ve mesafeli satış sözleşmesini</span> onaylıyorum.
+							</p>
 						</div>
 					</div>
 				)}
@@ -129,13 +148,13 @@ const Payment = () => {
 							</div>
 						</div>
 						<div className='mt-4 bg-gray-50 p-4'>
-							<div className='rounded bg-lime-200 flex justify-around items-center h-16 p-4 mb-4'>
+							<div className='rounded bg-lime-200 flex justify-between items-center h-16 p-4 mb-4'>
 								<p className='text-lg text-green'>Seçtiğiniz biletleri sizin için ayırdık. Lütfen size ayrılan bu sürede işlemleri tamamlayın.</p>
 								<div className='rounded py-3 px-6 border-2 border-red cursor-pointer'>
 									<p className='text-red'>Vazgeç</p>
 								</div>
 							</div>
-							<div>anan</div>
+
 							<div className='flex justify-between'>
 								<div>
 									<div className='flex justify-between w-[35rem]'>
@@ -146,7 +165,6 @@ const Payment = () => {
 											<p className='text-lg font-semibold'>Adet</p>
 											<p className='text-lg font-semibold'>Tutar</p>
 										</div>
-
 									</div>
 									<div className='mt-4 space-y-4'>
 										<div className='flex justify-between w-[35rem]'>
@@ -157,7 +175,6 @@ const Payment = () => {
 												<p className='text-base'>2 x 150 TRY</p>
 												<p className='text-base'>300 TRY</p>
 											</div>
-
 										</div>
 										<div className='flex justify-between w-[35rem]'>
 											<div>
@@ -167,7 +184,6 @@ const Payment = () => {
 												<p className='text-base'>2 x 5 TRY</p>
 												<p className='text-base'>10 TRY</p>
 											</div>
-
 										</div>
 										<div className='py-5 flex justify-between w-[35rem] border-t-2 border-gray-300'>
 											<div className='font-semibold text-base text-primary'>TOPLAM</div>
@@ -175,7 +191,7 @@ const Payment = () => {
 										</div>
 										<div className='w-[35rem] flex items-center'>
 											<div className='w-[25rem]'>
-												<input className='w-full h-10 focus:outline-none border border-gray-300 p-2' placeholder='İndirim kodu veya E-posta' type="text" />
+												<input className='w-full h-10 focus:outline-none border border-gray-300 p-2' placeholder='İndirim kodu veya E-posta' type='text' />
 											</div>
 											<div className='ml-2 w-[10]'>
 												<button className='bg-primary text-whites h-10 px-4'>UYGULA</button>
@@ -213,7 +229,6 @@ const Payment = () => {
 														initialValues={{ cardOwner: '', cardNumber: '', cardMonth: '', cardYear: '', cardCvc: '', ticketCode: '' }}
 														validationSchema={stepTwoSchema}
 														onSubmit={(values) => {
-															{/*console.log(values);*/ }
 															setCardState({
 																cardOwner: values.cardOwner,
 																cardNumber: values.cardNumber,
@@ -231,19 +246,54 @@ const Payment = () => {
 																<div className='text-red mt-2'>{errors.cardOwner}</div>
 																<div className='flex items-center justify-between mt-2'>
 																	<label className='select-none'>Kart Numarası</label>
-																	<input id='cardNumber' maxLength={19} value={values.cardNumber} onChange={handleChange} type='text' placeholder='**** **** **** 7777' className='placeholder:text-main border border-gray-300 text-main bg-whites p-3 w-[60%] focus:outline-none' />
+																	<input
+																		id='cardNumber'
+																		maxLength={19}
+																		value={values.cardNumber}
+																		onChange={handleChange}
+																		type='text'
+																		placeholder='**** **** **** 7777'
+																		className='placeholder:text-main border border-gray-300 text-main bg-whites p-3 w-[60%] focus:outline-none'
+																	/>
 																</div>
 																<div className='text-red mt-2'>{errors.cardNumber}</div>
 																<div className='flex items-center justify-between mt-2'>
 																	<div className='select-none'>Son Kullanma Tarihi</div>
 																	<div className='flex items-center space-x-2 w-[60%]'>
-																		<input id='cardMonth' pattern='[0-9]+' maxLength={2} value={values.cardMonth} onChange={handleChange} type='text' placeholder='Ay' className='placeholder:text-main border border-gray-300 text-main bg-whites w-1/2 p-3 focus:outline-none' />
-																		<input id='cardYear' pattern='[0-9]+' maxLength={2} value={values.cardYear} onChange={handleChange} type='text' placeholder='Yıl' className='placeholder:text-main border border-gray-300 text-main bg-whites w-1/2 p-3 focus:outline-none' />
+																		<input
+																			id='cardMonth'
+																			pattern='[0-9]+'
+																			maxLength={2}
+																			value={values.cardMonth}
+																			onChange={handleChange}
+																			type='text'
+																			placeholder='Ay'
+																			className='placeholder:text-main border border-gray-300 text-main bg-whites w-1/2 p-3 focus:outline-none'
+																		/>
+																		<input
+																			id='cardYear'
+																			pattern='[0-9]+'
+																			maxLength={2}
+																			value={values.cardYear}
+																			onChange={handleChange}
+																			type='text'
+																			placeholder='Yıl'
+																			className='placeholder:text-main border border-gray-300 text-main bg-whites w-1/2 p-3 focus:outline-none'
+																		/>
 																	</div>
 																</div>
 																<div className='flex items-center justify-between mt-2'>
 																	<div className='select-none'>CVV</div>
-																	<input id='cardCvc' pattern='[0-9]+' maxLength={3} value={values.cardCvc} onChange={handleChange} type='text' placeholder='CVC' className='placeholder:text-main w-[60%] border border-gray-300 text-main bg-whites p-3 focus:outline-none' />
+																	<input
+																		id='cardCvc'
+																		pattern='[0-9]+'
+																		maxLength={3}
+																		value={values.cardCvc}
+																		onChange={handleChange}
+																		type='text'
+																		placeholder='CVC'
+																		className='placeholder:text-main w-[60%] border border-gray-300 text-main bg-whites p-3 focus:outline-none'
+																	/>
 																</div>
 																<div className='text-red mt-2'>{(errors.cardCvc || errors.cardMonth || errors.cardYear) && 'Kart Ek Bilgileri Gereklidir!'}</div>
 																<div className='flex items-center justify-between mt-2'>
@@ -276,17 +326,13 @@ const Payment = () => {
 								</div>
 							</div>
 						</div>
-
-
 					</div>
 				)}
-				{pageStep === 3 && (
-					<div>Ödeme başarılıdır.</div>
-				)}
+				{pageStep === 3 && <div>Ödeme başarılıdır.</div>}
 			</div>
 			<Footer />
 		</>
 	);
 };
 
-export default Payment;
+export default memo(Payment);

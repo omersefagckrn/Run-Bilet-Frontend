@@ -10,9 +10,11 @@ const App = () => {
 			<Routes>
 				<Route index path='/' element={<Home />} />
 				<Route path='/tickets' element={<Tickets />} />
+
 				<Route path='/cards/:id' element={<CardDetail />} />
+
 				<Route path='/login/cards/:id' element={<LoginCardDetail />} />
-				<Route path='/payment' element={<Payment />} />
+				<Route path='/payment/:id' element={<Payment />} />
 				<Route path='organizer/:id' element={<Panel />}>
 					<Route index element={<Navigate to='ticket-office' replace />} />
 					<Route path='ticket-office' element={<TicketOffice />} />

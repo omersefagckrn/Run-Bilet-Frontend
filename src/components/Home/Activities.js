@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Logo } from '../../assets/';
 
 const Activities = () => {
+	let { id } = useParams();
 	return (
 		<>
 			<div className='ml-4 mt-4 mr-4'>
@@ -36,7 +37,7 @@ const Activities = () => {
 					{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((_item, i) => (
 						<SwiperSlide key={i}>
 							<div className='bg-whites mt-4 mb-4 w-44'>
-								<Link to={`/cards/1`}>
+								<Link to={`/cards/${id}`}>
 									<div className='flex flex-col'>
 										<div className='flex relative flex-col'>
 											<img className='h-24' src='https://picsum.photos/800/100' alt='' />
